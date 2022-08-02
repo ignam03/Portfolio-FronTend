@@ -12,7 +12,7 @@ export class AcercaDeComponent implements OnInit {
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
   constructor(private usuarioSvc: UsuarioService) {
-
+    this.usuario = new Usuario();
    }
 
   ngOnInit(): void {

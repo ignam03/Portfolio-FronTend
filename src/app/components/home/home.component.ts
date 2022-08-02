@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   usuarios!: Array<Usuario>;
 
   constructor(private usuarioSvc: UsuarioService) {
-   this.cargarUsuario()
+    this.usuario = new Usuario();
+    this.cargarUsuario()
   }
 
   ngOnInit(): void {

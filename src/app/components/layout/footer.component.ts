@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
   usuarios!: Array<Usuario>;
 
   constructor(private usuarioSvc: UsuarioService) {
-
+    this.usuario = new Usuario();
    }
 
   ngOnInit(): void {
