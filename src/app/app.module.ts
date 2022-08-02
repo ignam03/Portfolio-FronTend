@@ -9,6 +9,7 @@ import { FooterComponent } from './components/layout/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { BackgroundComponent } from './components/background/background.component';
 //import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -16,7 +17,9 @@ import { HttpClientModule} from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    BackgroundComponent,
+    
   ],
   imports: [
     BrowserModule,
