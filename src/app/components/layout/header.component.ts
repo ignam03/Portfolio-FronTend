@@ -1,3 +1,5 @@
+import { UsuarioService } from './../../services/usuario/usuario.service';
+import { Usuario } from './../../models/usuario/usuario';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  usuario!: Usuario;
+  usuarios!: Array<Usuario>;
 
-  ngOnInit(): void {
+  constructor(private usuarioSvc: UsuarioService) {
+
   }
 
-  
+  ngOnInit(): void {
+    this.cargarUsuario();
+  }
+
+  cargarUsuario() {
+    this.usuarioSvc.getUsuario().subscribe(result => {
+      console.log(result)
+      this.usuario = new Usuario();
+      Object.assign(this.usuario, result)
+      console.log(this.usuario)
+    })
+
+  }
 }
