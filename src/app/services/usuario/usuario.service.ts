@@ -35,4 +35,16 @@ export class UsuarioService {
     }
     return this._http.get(this.url + "/" + 1);
   }
+
+  updateUsuario(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams({
+
+      })
+    }
+    return this._http.get(this.url + "/editar/" + 1);
+  }
 }
