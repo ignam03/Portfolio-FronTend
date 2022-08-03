@@ -15,6 +15,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { SkillsComponent } from './components/skills/skills.component';
 //import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -29,6 +32,9 @@ import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
     ProyectoComponent,
     BannerComponent,
     AcercaDeComponent,
+    ServiciosComponent,
+    ContactoComponent,
+    SkillsComponent,
     
   ],
   imports: [
