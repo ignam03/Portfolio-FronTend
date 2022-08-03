@@ -35,13 +35,11 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  cargarUsuario(){
+  cargarUsuario() {
     this.usuarioSvc.getUsuario().subscribe(result => {
-      console.log(result)
       this.usuario = new Usuario();
       Object.assign(this.usuario, result)
-      console.log(this.usuario)
     })
-    
+
   }
 }

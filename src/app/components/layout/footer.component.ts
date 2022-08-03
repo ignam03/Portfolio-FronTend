@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private usuarioSvc: UsuarioService) {
     this.usuario = new Usuario();
-   }
+  }
 
   ngOnInit(): void {
     this.cargarUsuario();
@@ -22,10 +22,8 @@ export class FooterComponent implements OnInit {
 
   cargarUsuario() {
     this.usuarioSvc.getUsuario().subscribe(result => {
-      console.log(result)
       this.usuario = new Usuario();
       Object.assign(this.usuario, result)
-      console.log(this.usuario)
     })
 
   }
