@@ -1,86 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
 }
+
 body {
-  background: #ccc;
-  font-family: arial, verdana, tahoma;
+  background-color: burlywood;
+  padding: 10px;
 }
 
-/*Time to apply widths for accordian to work
-Width of image = 640px
-total images = 5
-so width of hovered image = 640px
-width of un-hovered image = 40px - you can set this to anything
-so total container width = 640 + 40*4 = 800px;
-default width = 800/5 = 160px;
-*/
-
-.accordian {
-  width: 805px;
-  height: 320px;
-  overflow: hidden;
-
-  /*Time for some styling*/
-  margin: 100px auto;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
-  -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+.container {
+  margin: 20px auto;
 }
 
-/*A small hack to prevent flickering on some browsers*/
-.accordian ul {
-  width: 1200px;
-  /*This will give ample space to the last item to move
-	instead of falling down/flickering during hovers.*/
+p {
+  margin: 0%;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.accordian li {
+img.pic1 {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+img.pic2 {
+  width: 100%;
+  height: 624px;
+  object-fit: fill;
+}
+
+.image-top {
   position: relative;
-  display: block;
-  width: 160px;
-  float: left;
-
-  border-left: 1px solid #888;
-
-  box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
-
-  /*Transitions to give animation effect*/
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  /*If you hover on the images now you should be able to 
-	see the basic accordian*/
+  overflow: hidden;
 }
 
-/*Reduce with of un-hovered elements*/
-.accordian ul:hover li {
-  width: 40px;
-}
-/*Lets apply hover effects now*/
-/*The LI hover style should override the UL hover style*/
-.accordian ul li:hover {
-  width: 640px;
+.image-top .overlay {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 15px 0 15px 15px;
+  color: white;
 }
 
-.accordian li img {
-  display: block;
+.image-top:hover .overlay {
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease-out;
 }
 
-/*Image title styles*/
-.image_title {
-  background: rgba(0, 0, 0, 0.5);
+.image-top .overlay::before {
+  content: "";
+  background: #ffff;
+  height: 100%;
+  width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0;
-  width: 640px;
+  bottom: -80px;
+  opacity: 0;
+  transition: all 0.3s ease-out;
 }
-.image_title a {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  padding: 20px;
-  font-size: 16px;
+
+.image-top:hover .overlay::before {
+  bottom: 0px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.image-middle {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-middle .overlay {
+  position: absolute;
+  bottom: 0px;
+  padding: 15px 0 15px 15px;
+  width: 100%;
+  color: white;
+}
+
+.image-middle .overlay::before {
+  content: "";
+  background: #ffff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -150px;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.image-middle:hover .overlay::before {
+  bottom: 0px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.image-middle:hover .overlay {
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease-out;
+}
+
+.text-muted {
+  color: #e5e2e2 !important;
+}
+
+@media (max-width: 930px) {
+  img.pic2 {
+    height: 300px !important;
+    object-fit: cover;
+  }
+
+  P {
+    font-size: 16px;
+  }
 }
