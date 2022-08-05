@@ -5,22 +5,22 @@
             <div class="container">
                 <div class="timeline clearfix">
                     <div class="vertical-line">
-                        <div id="post-1" class="vesti-col timeline-post">
+                        <div id="post-1" class="vesti-col timeline-post" *ngFor="let educacion of educacionList">
                             <div class="vesti-content-wrapper">
                                 <div class="photo">
                                     <img
-                                        src="https://acortar.link/KxejSZ">
+                                        src="{{educacion.imagEdu}}">
                                     <div class="vesti-date-wrapper">
                                         <div class="vesti-date">
                                             <span class="day">14</span>
                                             <br>
-                                            <span class="month">DEC</span>
+                                            <span class="month">{{educacion.fechaEdu}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="vesti-desc">
                                     <a class="desc-a" href="#">
-                                        <h4>Deleniti dignissimos perferendis</h4>
+                                        <h4>{{educacion.titulo}}</h4>
                                     </a>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas necessitatibus
                                         laboriosam est,
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="post-2" class="vesti-col timeline-post">
+                        <!-- <div id="post-2" class="vesti-col timeline-post">
                             <div class="vesti-content-wrapper">
                                 <div class="photo">
                                     <img
@@ -100,7 +100,7 @@
                                         sequi, possimus optio perferendis.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

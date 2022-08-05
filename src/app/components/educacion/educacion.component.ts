@@ -1,3 +1,5 @@
+import { EducacionService } from './../../services/edu/educacion.service';
+import { Educacion } from './../../models/educacion/educacion';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EducacionComponent implements OnInit {
 
-  constructor() { }
+  educacion!: Educacion;
+  educacionList!: Array<Educacion>;
 
-  ngOnInit(): void {
+  constructor(private educacionSvc:EducacionService) { 
+
   }
 
+  ngOnInit(): void {
+    this.cargarEducacionList();
+
+    }
+
+
+  cargarEducacionList(){
+    this.educacionSvc.getEduTodas().subscribe(result => {
+      console.log(result);
+      this.educacionList = new Array<Educacion>();
+      result.forEach((element: any) => {
+        this.educacion = new Educacion();
+        Object.assign(this.educacion,element);
+        this.educacionList.push(this.educacion);
+        console.log(this.educacion)
+      })
+    })
+  }
 }

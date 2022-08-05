@@ -5,5 +5,6 @@ export class Educacion {
     nombreInstituacion!: string;
     descripcionEdu!: string;
     fechaEdu!: number;
+    imagEdu!:string;
 
 }
