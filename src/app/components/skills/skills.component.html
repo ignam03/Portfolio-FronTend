@@ -13,14 +13,14 @@
                         class="fa fa-free-code-camp"></i></a>
             </div>
             <div class="column right">
-                <div class="bars">
+                <div class="bars" *ngFor="let skill of habilidades">
                     <div class="info">
-                        <span> Java</span>
+                        <span> {{skill.nombreHab}}</span>
                         <span>80%</span>
                     </div>
                     <div class="line html"></div>
                 </div>
-                <div class="bars">
+                <!-- <div class="bars">
                     <div class="info">
                         <span>Front-End Development</span>
                         <span>80%</span>
@@ -47,7 +47,7 @@
                         <span>75%</span>
                     </div>
                     <div class="line mysql"></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
