@@ -1,3 +1,5 @@
+import { TokenService } from './../../services/token/token.service';
+import { Router } from '@angular/router';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { Usuario } from './../../models/usuario/usuario';
 import { Component, OnInit } from '@angular/core';
@@ -8,16 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  isLogged: boolean = false;
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
 
-  constructor(private usuarioSvc: UsuarioService) {
+  constructor(private usuarioSvc: UsuarioService, private router: Router,private tokenSvc:TokenService) {
     this.usuario = new Usuario();
+    this.cargarUsuario()
   }
 
   ngOnInit(): void {
-    this.cargarUsuario();
+    if(this.tokenSvc.getToken()){
+      this.isLogged=true
+    } else{
+      this.isLogged=false;
+    }
   }
 
   cargarUsuario() {
@@ -27,6 +34,14 @@ export class HeaderComponent implements OnInit {
       Object.assign(this.usuario, result)
       console.log(this.usuario)
     })
+  }
 
+  login() {
+    this.router.navigate(['/login']);
+  }
+
+  logout(){
+    this.tokenSvc.logout();
+    window.location.reload();
   }
 }
