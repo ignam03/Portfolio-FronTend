@@ -1,3 +1,8 @@
+import { Usuario } from './../../models/usuario/usuario';
+import { UsuarioService } from './../../services/usuario/usuario.service';
+import { TokenService } from './../../services/token/token.service';
+import { AuthService } from './../../services/auth/auth.service';
+import { User } from './../../models/user/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,15 +13,54 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:Router) {
+  user!: User;
+  username!: string
+  password!: string;
+  isLogged!: boolean;
+  roles!: string[];
+  usuario!: Usuario
 
-   }
+
+  constructor(private router: Router, private authSvc: AuthService, private tokenSvc: TokenService, private UsuarioSvc: UsuarioService) {
+    this.user = new User();
+  }
 
   ngOnInit(): void {
+    if (this.tokenSvc.getToken()) {
+      this.isLogged = true;
+    }
   }
 
-  volver(){
+
+  login() {
+    this.username = "igna3";
+    this.password = "123root";
+    this.authSvc.login(this.username, this.password).subscribe(result => {
+      console.log(result.token);
+      console.log(result)
+      this.tokenSvc.setToken(result.token);
+      console.log(result.token);
+      this.isLogged = true;
+      console.log(this.isLogged);
+      //this.reloadPage();
+      // this.UsuarioSvc.getUsuario().subscribe(result => {
+      //   console.log(result);
+      //   this.usuario = new Usuario();
+      //   Object.assign(this.usuario, result)
+      //   console.log(this.usuario);
+      //   this.router.navigate(['/'])
+      // })
+      this.router.navigate(['/'])
+    }, err => {
+      console.log(err);
+    })
+
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+  volver() {
     this.router.navigate(['/']);
   }
-
 }
