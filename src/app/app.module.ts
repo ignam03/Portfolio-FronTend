@@ -1,3 +1,4 @@
+import { authInterceptorProviders } from './services/authInt/auth-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -46,7 +47,9 @@ import { SkillsComponent } from './components/skills/skills.component';
     BrowserAnimationsModule,
     //ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
