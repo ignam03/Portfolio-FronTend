@@ -1,3 +1,4 @@
+import { TokenService } from './../../services/token/token.service';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { Usuario } from './../../models/usuario/usuario';
 import { Component, OnInit } from '@angular/core';
@@ -11,12 +12,18 @@ export class AcercaDeComponent implements OnInit {
 
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
-  constructor(private usuarioSvc: UsuarioService) {
+  isLogged:boolean = false;
+  constructor(private usuarioSvc: UsuarioService,private tokenService: TokenService) {
     this.usuario = new Usuario();
   }
 
   ngOnInit(): void {
     this.cargarUsuario();
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    } else{
+      this.isLogged = false;
+    }
   }
 
   cargarUsuario() {
@@ -24,6 +31,11 @@ export class AcercaDeComponent implements OnInit {
       this.usuario = new Usuario();
       Object.assign(this.usuario, result)
     })
+  }
 
+  updateUsuario(usuario: Usuario): void {
+    this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
+
+    })
   }
 }

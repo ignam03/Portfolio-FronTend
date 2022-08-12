@@ -2,6 +2,9 @@
 <section class="about" id="about">
     <div class="max-width">
         <h2 class="title">Sobre mí</h2>
+        <div class="col-md-6 " *ngIf="isLogged">
+            <a href="" class="btn btn-primary btn-lg">Editar</a>
+        </div>
         <div class="about-content">
             <div class="column left">
                 <img src="{{usuario.fotoPerfil}}" alt="" />
