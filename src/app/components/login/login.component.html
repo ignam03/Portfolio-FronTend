@@ -4,30 +4,30 @@
                 aria-hidden="true">         Volver </i>
         </button>
         <header>Login Form</header>
-        <form action="#">
+        <form action="" (ngSubmit)="login()" novalidate>
             <div class="field">
-                <span class="fa fa-user"></span>
-                <input type="text" required placeholder="Email or Phone">
+                <span class="fa fa-user" for="userName"></span>
+                <input type="text" [(ngModel)]="user.username" name="userName" id="userName" required placeholder="Username o Email">
             </div>
             <div class="field space">
                 <span class="fa fa-lock"></span>
-                <input type="password" class="pass-key" required placeholder="Password">
-                <span class="show">SHOW</span>
+                <input type="password" [(ngModel)]="user.password" name="password"  class="pass-key" required placeholder="Password">
+                <span class="show" for="password">SHOW</span>
             </div>
             <div class="pass">
                 <a href="#">Forgot Password?</a>
             </div>
             <div class="field">
-                <input type="submit" (click)="login()" value="LOGIN">
+                <input type="submit" value="LOGIN">
             </div>
         </form>
         <div class="login">Or login with</div>
         <div class="links">
             <div class="facebook">
-                <i class="fab fa-facebook-f"><span>Facebook</span></i>
+                <i class="fa fa-facebook-f"><span>Facebook</span></i>
             </div>
             <div class="instagram">
-                <i class="fab fa-instagram"><span>Instagram</span></i>
+                <i class="fa fa-instagram"><span>Instagram</span></i>
             </div>
         </div>
         <div class="signup">Don't have account?

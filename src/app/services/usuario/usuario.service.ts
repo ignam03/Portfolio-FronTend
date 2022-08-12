@@ -1,3 +1,4 @@
+import { Usuario } from './../../models/usuario/usuario';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -36,7 +37,7 @@ export class UsuarioService {
     return this._http.get(this.url + "/" + 1);
   }
 
-  updateUsuario(): Observable<any> {
+  updateUsuario(usuario:Usuario): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
 
@@ -45,6 +46,6 @@ export class UsuarioService {
 
       })
     }
-    return this._http.get(this.url + "/editar/" + 1);
+    return this._http.put<any>(this.url + "/editar/" + 1,usuario);
   }
 }

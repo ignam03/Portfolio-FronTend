@@ -33,9 +33,11 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    this.username = "igna3";
-    this.password = "123root";
-    this.authSvc.login(this.username, this.password).subscribe(result => {
+    // this.username = "igna3";
+    // this.password = "123root";
+    console.log(this.user.username)
+    console.log(this.user.password)
+    this.authSvc.login(this.user.username, this.user.password).subscribe(result => {
       console.log(result.token);
       console.log(result)
       this.tokenSvc.setToken(result.token);
