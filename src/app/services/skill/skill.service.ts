@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class SkillService {
 
-  url: string = "http://localhost:8080/skills/ver/todas"
+  url: string = "http://localhost:8080/skills/see/all"
 
   constructor(private _http: HttpClient) {
 

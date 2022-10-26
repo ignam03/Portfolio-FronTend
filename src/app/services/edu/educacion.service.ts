@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class EducacionService {
 
-  url: string = 'http://localhost:8080/educacion/ver/todas';
+  url: string = 'http://localhost:8080/education/see/all';
 
   constructor(private _http: HttpClient) {
 

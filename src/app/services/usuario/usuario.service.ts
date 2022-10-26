@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  url: string = "http://localhost:8080/portfolio/ver"
+  url: string = "http://localhost:8080/portfolio/see/user"
   constructor(private _http: HttpClient) {
 
   }
@@ -37,7 +37,7 @@ export class UsuarioService {
     return this._http.get(this.url + "/" + 1);
   }
 
-  updateUsuario(usuario:Usuario): Observable<any> {
+  updateUsuario(usuario: Usuario): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
 
@@ -46,6 +46,6 @@ export class UsuarioService {
 
       })
     }
-    return this._http.put<any>(this.url + "/editar/" + 1,usuario);
+    return this._http.put<any>(this.url + "/editar/" + 1, usuario);
   }
 }
