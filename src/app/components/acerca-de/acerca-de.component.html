@@ -2,8 +2,13 @@
 <section class="about" id="about">
     <div class="max-width">
         <h2 class="title">Sobre mí</h2>
-        <div class="col-md-6 " *ngIf="isLogged">
-            <a href="" class="btn btn-primary btn-lg">Editar</a>
+        <div class="col-md-6 " >
+
+        </div>
+        <div class="about-content" *ngIf="isLogged">
+            <div class="column right">
+                <a href="" class="mb-2 ms-5">Editar</a>
+            </div>
         </div>
         <div class="about-content">
             <div class="column left">
@@ -13,7 +18,7 @@
                 <div class="text">
                     Yo soy {{usuario.nombre}} and I'm a <span class="typing-2">Desarrollador de Software</span>
                 </div>
-                <p>
+                <p contenteditable="true">
                     {{usuario.descripcion}}.{{usuario.nombre}}
                 </p>
                 <a href="https://drive.google.com/file/d/1nphjZ5DbAGzRQjQbm1TIZ2xN1CM1EPZV/view?usp=sharing"

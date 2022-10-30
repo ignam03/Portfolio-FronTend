@@ -12,16 +12,16 @@ export class AcercaDeComponent implements OnInit {
 
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
-  isLogged:boolean = false;
-  constructor(private usuarioSvc: UsuarioService,private tokenService: TokenService) {
+  isLogged: boolean = false;
+  constructor(private usuarioSvc: UsuarioService, private tokenService: TokenService) {
     this.usuario = new Usuario();
   }
 
   ngOnInit(): void {
     this.cargarUsuario();
-    if(this.tokenService.getToken()){
+    if (this.tokenService.getToken()) {
       this.isLogged = true;
-    } else{
+    } else {
       this.isLogged = false;
     }
   }
@@ -35,7 +35,11 @@ export class AcercaDeComponent implements OnInit {
 
   updateUsuario(usuario: Usuario): void {
     this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
-
+      console.log("funciona(?");
     })
+  }
+
+  onNameChange($event: any) {
+    null;
   }
 }

@@ -236,7 +236,7 @@ section .title::after {
 }
 
 .home .home-content .text-2 {
-  font-size: 75px;
+  font-size: 65px;
   font-weight: 600;
   margin-left: -3px;
 }
@@ -261,7 +261,7 @@ section .title::after {
   background: crimson;
   color: #fff;
   font-size: 25px;
-  padding: 12px 36px;
+  padding: 5px 17px;
   margin-top: 20px;
   font-weight: 400;
   border-radius: 6px;
@@ -828,4 +828,110 @@ footer span a:hover {
     font-size: 23px;
     line-height: 38px;
   }
+}
+
+.login-icon {	float: right;
+  display: block;
+color: #fff;
+padding: 0 1.5rem;
+text-decoration: none;
+font-size: 35px;}
+/* #Modal dialog
+================================================== */
+.modalDialog {
+position: fixed;
+font-family: Arial, Helvetica, sans-serif;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: rgba(0, 0, 0, 0.7);
+z-index: 99999;
+opacity: 0;
+-webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+pointer-events: none;
+}
+/*	.modalDialog img {
+  width: 95%;
+
+}*/
+.modalDialog:target {
+opacity: 1;
+pointer-events: auto;
+}
+.modalDialog>div {
+width: 40%;
+position: relative;
+margin: 25px auto;
+padding: 5px 20px 13px 20px;
+border-radius: 10px;
+background: #fff;
+}
+
+
+/* #LOGIN FORM
+================================================== */
+
+.login-container {
+width: 25%;
+border: 10px double #999;
+border-radius: 15%;
+}
+.img-container {
+text-align: center;
+}
+img.login-avatar {
+width: 25%;
+border-radius: 50%;
+margin-top: 5%;
+}
+.login {
+background-color: #3c78aa;
+color: white;
+padding: 10px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+border-radius: 5px;
+clear: both;
+}
+.login-info input[type="text"], .login-info input[type="password"] {
+background-color: #fff;
+width: 95%;
+border: 1px solid #D1D1D1;
+border-radius: 4px;
+height: 20px;
+padding: 6px 0 2px 5px;
+margin: 8px;
+}
+.login-info input[type="text"]:focus, .login-info input[type="password"]:focus {
+border: 1px solid #10a7d5;
+background-color: #fff7e6;
+outline: 0;
+}
+.login-info {padding-bottom: 5%;}
+
+.login-modal-close {
+width: auto;
+font-size: 15px;
+padding: 5px 10px;
+background-color: #db8e57;
+color: white;
+text-decoration: none;
+border-radius: 5%;
+float: right;
+}
+.login-modal-close:hover {
+background-color: #e09f6f;
+}
+.login-bottom-container {
+text-align: center;
+padding: 5px;
+margin-bottom: 5px;
+}
+span.psw {
+padding-top: 16px;
 }

@@ -3,6 +3,32 @@
     <div class="max-width">
         <div class="home-content">
             <div class="text-1">Hola, mi nombre es </div>
+            <div class="login-icon" *ngIf="isLogged">
+                <ul>
+                    <li class="right">
+                        <a href="#openLoginModal"><i class="fa fa-pencil"></i></a>
+                    </li>
+                </ul>
+            </div><!-- login Modal starts here    ================================================== -->
+            <div class="modalDialog" id="openLoginModal">
+                <div class="login-container">
+                    <div class="img-container"><img alt="Avatar" class="login-avatar" src=
+                    "{{usuario.fotoPerfil}}"></div>
+                    <div class="login-info">
+                        <form action="">
+                            <label for="idNombre"><b class="text-black text-center">Nombre</b></label> <input name="nombre" id="idNombre" placeholder="{{usuario.nombre}}" required="" [(ngModel)]="usuario.nombre" type="text">
+                            <label for="idApellido"><b class="text-black">Apellido</b></label> <input name="apellido" id="idApellido" [(ngModel)]="usuario.apellido" placeholder="{{usuario.apellido}}" required="" type="text">
+                            <label for="idDesc"><b class="text-black">Descripcion</b></label><br><textarea name="descripcion" id="idDesc" [(ngModel)]="usuario.descripcion" placeholder="{{usuario.descripcion}}" required="true" cols="80" rows="6"></textarea> 
+                            <label for="idTitulo"><b class="text-black">Titulo</b></label> <input name="titulo" name="idTitulo" [(ngModel)]="usuario.titulo" placeholder="{{usuario.titulo}}" required="" type="text">
+                            <label for="idImg"><b class="text-black text-center">Foto de perfil</b></label> <input name="imagen" id="idImg" placeholder="{{usuario.nombre}}" required="" [(ngModel)]="usuario.fotoPerfil" type="text">
+                            <div class="login-bottom-container">
+                                <span type="submit" class="psw"><a href="#" (click)="updateUsuario()">Actualizar Datos.</a></span>
+                                <button class="btn "type="button" (click)="updateUsuario()"></button>
+                            </div><a class="login-modal-close" href="#close">Cancel</a> <input checked="checked" type="checkbox"> Remember me
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="text-2"><span><</span><span>/</span>{{usuario.nombre}} {{usuario.apellido}} <span>></span></div>
             <div class="text-3">Yo Soy  <span class="typing">{{usuario.titulo}}</span></div>
             <a href="https://github.com/ignam03" target="_blank"><i class="fa fa-github"></i> Github</a>

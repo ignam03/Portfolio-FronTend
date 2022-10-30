@@ -1,3 +1,4 @@
+import { TokenService } from './../../services/token/token.service';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { Usuario } from './../../models/usuario/usuario';
 import { Component, OnInit } from '@angular/core';
@@ -11,13 +12,20 @@ export class BannerComponent implements OnInit {
 
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
+  isLogged=false;
 
-  constructor(private usuarioSvc: UsuarioService) {
+  constructor(private usuarioSvc: UsuarioService, private tokenService: TokenService) {
     this.usuario = new Usuario();
   }
 
   ngOnInit(): void {
     this.cargarUsuario();
+    this.cargarUsuario();
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
 
   cargarUsuario() {
@@ -28,4 +36,9 @@ export class BannerComponent implements OnInit {
 
   }
 
+  updateUsuario(): void {
+    this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
+      console.log("funciona(?");
+    })
+  }
 }
