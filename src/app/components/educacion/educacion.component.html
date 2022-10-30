@@ -5,11 +5,92 @@
             <div class="container">
                 <div class="timeline clearfix">
                     <div class="vertical-line">
+                        <div class="login-icon" *ngIf="isLogged">
+                            <ul>
+                                <li class="right">
+                                    <a href="#openLoginModal1">Agregar <i class="fa fa-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modalDialog" id="openLoginModal1">
+                            <div class="login-container">
+                                <div class="img-container"><img alt="Avatar" class="login-avatar"
+                                        src="http://i701.photobucket.com/albums/ww17/suedinym/pens/avatar-f_zps9q1uch04.png">
+                                </div>
+                                <div class="login-info">
+                                    <form action="">
+                                        <label for="idTitulo"><b>Titulo</b></label> <input [(ngModel)]="eduLoad.titulo"
+                                            id="idTitulo" name="titulo" required="true" type="text">
+                                        <label for="idNombreIns"><b>Nombre de la Institucion</b></label>
+                                        <input name="institucion" id="idNombreIns"
+                                            [(ngModel)]="eduLoad.nombreInstituacion" required="true" type="text">
+                                        <label for="idDesc"><b>Descripcion</b></label> <input name="descripcion"
+                                            id="idDes" [(ngModel)]="eduLoad.descripcionEdu" required="" type="text">
+                                        <label for="idFecha"><b>Fecha</b></label> <input name="fecha" id="idFecha"
+                                            [(ngModel)]="eduLoad.fechaEdu" required="" type="text">
+                                        <label for="idImagen"><b>Imagen</b></label> <input name="imagen" id="idImagen"
+                                            [(ngModel)]="eduLoad.imagEdu" required="" type="text">
+                                        <button class="login" type="submit"
+                                            (click)="createdEducation()">agregar</button>
+                                        <a class="login-modal-close" href="#close">Cancel</a> <input checked="checked"
+                                            type="checkbox"> Remember me
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div id="post-1" class="vesti-col timeline-post" *ngFor="let educacion of educacionList">
                             <div class="vesti-content-wrapper">
                                 <div class="photo">
-                                    <img
-                                        src="{{educacion.imagEdu}}">
+                                    <div class="login-icon" *ngIf="isLogged">
+                                        <ul>
+                                            <li class="right">
+                                                <button class="btn btn-primary"><i class="fa fa-trash"
+                                                        (click)="deleteEducation(educacion.eduId)"></i></button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="login-icon" *ngIf="isLogged">
+                                        <ul>
+                                            <li class="right">
+                                                <a href="#openLoginModal2" (click)="loadEducation(educacion.eduId)"><i
+                                                        class="fa fa-pencil"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modalDialog" id="openLoginModal2">
+                                        <div class="login-container">
+                                            <div class="img-container"><img alt="Avatar" class="login-avatar"
+                                                    src="{{eduLoad.imagEdu}}">
+                                            </div>
+                                            <div class="login-info">
+                                                <form action="">
+                                                    <label for="idTitulo"><b>Titulo</b></label> <input
+                                                        [(ngModel)]="eduLoad.titulo" id="idTitulo" name="titulo"
+                                                        placeholder="{{eduLoad.titulo}}" required="" type="text">
+                                                    <label for="idNombreIns"><b>Nombre de la Institucion</b></label>
+                                                    <input name="institucion" id="idNombreIns"
+                                                        placeholder="{{eduLoad.nombreInstituacion}} "
+                                                        [(ngModel)]="eduLoad.nombreInstituacion" required=""
+                                                        type="text">
+                                                    <label for="idDesc"><b>Descripcion</b></label> <input
+                                                        name="descripcion" id="idDes"
+                                                        placeholder="{{eduLoad.descripcionEdu}}"
+                                                        [(ngModel)]="eduLoad.descripcionEdu" required="" type="text">
+                                                    <label for="idFecha"><b>Fecha</b></label> <input name="fecha"
+                                                        id="idFecha" placeholder="{{eduLoad.fechaEdu}}"
+                                                        [(ngModel)]="eduLoad.fechaEdu" required="" type="text">
+                                                    <label for="idImagen"><b>Imgaen</b></label> <input name="imagen"
+                                                        id="idImagen" placeholder="{{eduLoad.imagEdu}}"
+                                                        [(ngModel)]="eduLoad.imagEdu" required="" type="text">
+                                                    <button class="login" type="submit"
+                                                        (click)="updateEducation()">Actualizar Datos.</button><a
+                                                        class="login-modal-close" href="#close">Cancel</a> <input
+                                                        checked="checked" type="checkbox"> Remember me
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="{{educacion.imagEdu}}">
                                     <div class="vesti-date-wrapper">
                                         <div class="vesti-date">
                                             <span class="day">14</span>
@@ -21,6 +102,7 @@
                                 <div class="vesti-desc">
                                     <a class="desc-a" href="#">
                                         <h4>{{educacion.titulo}}</h4>
+                                        <h3 class="text-black">{{educacion.nombreInstituacion}}</h3>
                                     </a>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas necessitatibus
                                         laboriosam est,
@@ -30,77 +112,30 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div id="post-2" class="vesti-col timeline-post">
+                        <div id="post-1" class="vesti-col timeline-post" *ngFor="let experience of experienceList">
                             <div class="vesti-content-wrapper">
                                 <div class="photo">
-                                    <img
-                                        src="https://acortar.link/KxejSZ">
+                                    <img src="{{experience.imgExp}}">
                                     <div class="vesti-date-wrapper">
                                         <div class="vesti-date">
-                                            <span class="day">25</span>
+                                            <span class="day">14</span>
                                             <br>
-                                            <span class="month">NOV</span>
+                                            <span class="month">{{experience.fechaExp}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="vesti-desc">
                                     <a class="desc-a" href="#">
-                                        <h4>Facilis ipsa fugit</h4>
+                                        <h4>{{experience.tituloExp}}</h4>
                                     </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum suscipit eaque,
-                                        quasi aperiam
-                                        officiis ex, odio quisquam hic, ab iure placeat, possimus magnam blanditiis.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas necessitatibus
+                                        laboriosam est,
+                                        suscipit recusandae. Velit eius voluptatem non, fuga numquam a, quisquam sint
+                                        autem
+                                        praesentium laudantium explicabo eligendi.</p>
                                 </div>
                             </div>
                         </div>
-                        <div id="post-3" class="vesti-col timeline-post">
-                            <div class="vesti-content-wrapper">
-                                <div class="photo">
-                                    <img
-                                        src="http://res.cloudinary.com/do5ht5y0y/image/upload/v1501322753/post-img-4_zpsazehwtua_ewyer0.jpg">
-                                    <div class="vesti-date-wrapper">
-                                        <div class="vesti-date">
-                                            <span class="day">16</span>
-                                            <br>
-                                            <span class="month">NOV</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vesti-desc">
-                                    <a class="desc-a" href="#">
-                                        <h4>Rerum commodi</h4>
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, incidunt eius
-                                        totam animi,
-                                        alias non iste similique perspiciatis aut, dolor harum dolores explicabo sunt
-                                        cum
-                                        consequatur sint maiores, ullam corrupti.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="post-4" class="vesti-col timeline-post">
-                            <div class="vesti-content-wrapper">
-                                <div class="photo">
-                                    <img
-                                        src="http://res.cloudinary.com/do5ht5y0y/image/upload/v1501322753/post-img-3_zpsxo9mx2fx_lqohzy.jpg">
-                                    <div class="vesti-date-wrapper">
-                                        <div class="vesti-date">
-                                            <span class="day">4</span>
-                                            <br>
-                                            <span class="month">OCT</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vesti-desc">
-                                    <a class="desc-a" href="#">
-                                        <h4>Necessitatibus velit</h4>
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium quibusdam
-                                        expedita
-                                        sequi, possimus optio perferendis.</p>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
