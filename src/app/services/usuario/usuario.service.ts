@@ -46,6 +46,8 @@ export class UsuarioService {
 
       })
     }
-    return this._http.put<any>(this.url + "/editar/" + 1, usuario);
+    console.log(usuario.userId);
+    console.log(usuario);
+    return this._http.put<any>("http://localhost:8080/portfolio/edit/" + usuario.userId, usuario);
   }
 }
