@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-10 m-auto">
-            <h2 class="text-center">Educacion/Experiencia</h2>
+            <h2 class="text-center">Educacion</h2>
             <div class="container">
                 <div class="timeline clearfix">
                     <div class="vertical-line">
                         <div class="login-icon" *ngIf="isLogged">
                             <ul>
                                 <li class="right">
-                                    <a href="#openLoginModal1">Agregar <i class="fa fa-plus"></i></a>
+                                    <a href="#openLoginModal1">Agregar Educacion<i class="fa fa-plus"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -31,7 +31,7 @@
                                         <label for="idImagen"><b>Imagen</b></label> <input name="imagen" id="idImagen"
                                             [(ngModel)]="eduLoad.imagEdu" required="" type="text">
                                         <button class="login" type="submit"
-                                            (click)="createdEducation()">agregar</button>
+                                            (click)="createdEducation()">Agregar educacion</button>
                                         <a class="login-modal-close" href="#close">Cancel</a> <input checked="checked"
                                             type="checkbox"> Remember me
                                     </form>
@@ -112,9 +112,94 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 m-auto">
+            <h2 class="text-center">Experiencia</h2>
+            <div class="container">
+                <div class="timeline clearfix">
+                    <div class="vertical-line">
+                        <div class="login-icon" *ngIf="isLogged">
+                            <ul>
+                                <li class="right">
+                                    <a href="#openLoginModal5">Agregar Experiencia <i class="fa fa-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modalDialog" id="openLoginModal5">
+                            <div class="login-container">
+                                <div class="img-container"><img alt="Avatar" class="login-avatar"
+                                        src="http://i701.photobucket.com/albums/ww17/suedinym/pens/avatar-f_zps9q1uch04.png">
+                                </div>
+                                <div class="login-info">
+                                    <form action="">
+                                        <label for="idTituloExp"><b>Titulo</b></label> <input
+                                            [(ngModel)]="expLoad.tituloExp" id="idTituloExp" name="titulo" required=""
+                                            type="text">
+                                        <label for="idDescExp"><b>Descripcion</b></label> <input name="descripcion"
+                                            id="idDescExp" [(ngModel)]="expLoad.descExp" required="" type="text">
+                                        <label for="idFechaExp"><b>Fecha</b></label> <input name="fecha" id="idFechaExp"
+                                            [(ngModel)]="expLoad.fechaExp" required="" type="text">
+                                        <label for="idImagenExp"><b>Imgaen</b></label> <input name="imagen"
+                                            id="idImagenExp" [(ngModel)]="expLoad.imgExp" required="" type="text">
+                                        <button class="login" type="submit"
+                                            (click)="createdExperience()">agregar experiencia</button>
+                                        <a class="login-modal-close" href="#close">Cancel</a> <input checked="checked"
+                                            type="checkbox"> Remember me
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div id="post-1" class="vesti-col timeline-post" *ngFor="let experience of experienceList">
                             <div class="vesti-content-wrapper">
                                 <div class="photo">
+                                    <div class="login-icon" *ngIf="isLogged">
+                                        <ul>
+                                            <li class="right">
+                                                <button class="btn btn-primary"><i class="fa fa-trash"
+                                                        (click)="deleteExperience(experience.expId)"></i></button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="login-icon" *ngIf="isLogged">
+                                        <ul>
+                                            <li class="right">
+                                                <a href="#openLoginModal6" (click)="loadExperience(experience.expId)"><i
+                                                        class="fa fa-pencil"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modalDialog" id="openLoginModal6">
+                                        <div class="login-container">
+                                            <div class="img-container"><img alt="Avatar" class="login-avatar"
+                                                    src="{{expLoad.imgExp}}">
+                                            </div>
+                                            <div class="login-info">
+                                                <form action="">
+                                                    <label for="idTitulo"><b>Titulo</b></label> <input
+                                                        [(ngModel)]="expLoad.tituloExp" id="idTitulo" name="titulo"
+                                                        placeholder="{{expLoad.tituloExp}}" required="" type="text">
+                                                    <label for="idDesc"><b>Descripcion</b></label> <input
+                                                        name="descripcion" id="idDes" placeholder="{{expLoad.descExp}}"
+                                                        [(ngModel)]="expLoad.descExp" required="" type="text">
+                                                    <label for="idFecha"><b>Fecha</b></label> <input name="fecha"
+                                                        id="idFecha" placeholder="{{expLoad.fechaExp}}"
+                                                        [(ngModel)]="expLoad.fechaExp" required="" type="text">
+                                                    <label for="idImagen"><b>Imgaen</b></label> <input name="imagen"
+                                                        id="idImagen" placeholder="{{expLoad.imgExp}}"
+                                                        [(ngModel)]="expLoad.imgExp" required="" type="text">
+                                                    <button class="login" type="submit"
+                                                        (click)="updateExperience()">Actualizar Datos.</button><a
+                                                        class="login-modal-close" href="#close">Cancel</a> <input
+                                                        checked="checked" type="checkbox"> Remember me
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <img src="{{experience.imgExp}}">
                                     <div class="vesti-date-wrapper">
                                         <div class="vesti-date">
@@ -128,11 +213,7 @@
                                     <a class="desc-a" href="#">
                                         <h4>{{experience.tituloExp}}</h4>
                                     </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas necessitatibus
-                                        laboriosam est,
-                                        suscipit recusandae. Velit eius voluptatem non, fuga numquam a, quisquam sint
-                                        autem
-                                        praesentium laudantium explicabo eligendi.</p>
+                                    <p>{{experience.descExp}}</p>
                                 </div>
                             </div>
                         </div>
