@@ -19,7 +19,7 @@ import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { SkillsComponent } from './components/skills/skills.component';
-//import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { SkillsComponent } from './components/skills/skills.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    //ToastrModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   providers: [
     authInterceptorProviders

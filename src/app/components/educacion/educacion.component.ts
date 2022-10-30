@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { TokenService } from './../../services/token/token.service';
 import { Experiencia } from './../../models/experiencia/experiencia';
 import { ExperienciaService } from './../../services/exp/experiencia.service';
@@ -21,7 +22,7 @@ export class EducacionComponent implements OnInit {
   experienceList!: Array<Experiencia>;
   isLogged = false;
 
-  constructor(private educacionSvc: EducacionService, private experienceSvc: ExperienciaService, private activatedRoute: ActivatedRoute, private tokenService: TokenService) {
+  constructor(private educacionSvc: EducacionService, private experienceSvc: ExperienciaService, private activatedRoute: ActivatedRoute, private tokenService: TokenService, private toastrSvc: ToastrService) {
     this.educacion = new Educacion();
     this.experience = new Experiencia();
   }
@@ -68,6 +69,7 @@ export class EducacionComponent implements OnInit {
     console.log(this.eduLoad);
     this.educacionSvc.updateEducation(this.eduLoad).subscribe(result => {
       console.log("actualizado creo");
+      this.toastrSvc.info("Education has update successfully");
       window.location.reload();
     })
   }
@@ -75,8 +77,7 @@ export class EducacionComponent implements OnInit {
   createdEducation() {
     console.log(this.eduLoad);
     this.educacionSvc.createdEducation(this.eduLoad).subscribe(result => {
-      console.log("edudcaicon has created");
-      console.log(this.eduLoad);
+      this.toastrSvc.success("Education has created successfully");
       window.location.reload();
     })
     this.eduLoad = new Educacion();
@@ -84,7 +85,7 @@ export class EducacionComponent implements OnInit {
 
   deleteEducation(id: number) {
     this.educacionSvc.deleteEducation(id).subscribe(result => {
-      console.log(result);
+      this.toastrSvc.success("Education has deleted successfully");
       window.location.reload();
     })
   }
@@ -117,7 +118,7 @@ export class EducacionComponent implements OnInit {
   updateExperience() {
     console.log(this.expLoad);
     this.experienceSvc.updateExperience(this.expLoad).subscribe(result => {
-      console.log("actualizado creo");
+      this.toastrSvc.info("Experience updated successfully");
       window.location.reload();
     })
   }
@@ -125,8 +126,7 @@ export class EducacionComponent implements OnInit {
   createdExperience() {
     console.log(this.expLoad);
     this.experienceSvc.createdExperience(this.expLoad).subscribe(result => {
-      console.log("edudcaicon has created");
-      console.log(this.expLoad);
+      this.toastrSvc.success("Experience created successfully");
       window.location.reload();
     })
     this.eduLoad = new Educacion();
@@ -135,7 +135,8 @@ export class EducacionComponent implements OnInit {
   deleteExperience(id: number) {
     console.log(id);
     this.experienceSvc.deleteExperience(id).subscribe(result => {
-      console.log(result);
+      this.toastrSvc.success("Experience deleted successfully");
+      window.location.reload();
     })
   }
 }
