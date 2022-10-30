@@ -65,4 +65,8 @@ export class LoginComponent implements OnInit {
   volver() {
     this.router.navigate(['/']);
   }
+
+  createdAccount(){
+    this.router.navigate(['/register'])
+  }
 }

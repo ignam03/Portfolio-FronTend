@@ -50,4 +50,17 @@ export class UsuarioService {
     console.log(usuario);
     return this._http.put<any>("http://localhost:8080/portfolio/edit/" + usuario.userId, usuario);
   }
+
+  createdUsuario(usuario:Usuario) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams({
+
+      })
+    }
+    console.log(usuario);
+    return this._http.post<any>("http://localhost:8080/portfolio/new/",usuario);
+  }
 }

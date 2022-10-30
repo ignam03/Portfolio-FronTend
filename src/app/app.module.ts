@@ -20,6 +20,7 @@ import { ServiciosComponent } from './components/servicios/servicios.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ToastrModule } from 'ngx-toastr';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     ServiciosComponent,
     ContactoComponent,
     SkillsComponent,
+    RegisterComponent,
     
   ],
   imports: [
