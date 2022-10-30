@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class EducacionService {
 
-  url: string = 'http://localhost:8080/education/';
+  url: string = 'https://appportfoliobackendarg.herokuapp.com/education/';
 
   constructor(private _http: HttpClient) {
 

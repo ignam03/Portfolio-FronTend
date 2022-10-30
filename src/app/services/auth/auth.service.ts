@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  url: string = "http://localhost:8080/auth/";
+  url: string = "https://appportfoliobackendarg.herokuapp.com/auth/";
 
   constructor(private _http: HttpClient) {
 

@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class ExperienciaService {
 
-  url: string = 'http://localhost:8080/experience/';
+  url: string = 'https://appportfoliobackendarg.herokuapp.com/experience/';
 
   constructor(private _http: HttpClient) {
 

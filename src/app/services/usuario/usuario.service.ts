@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  url: string = "http://localhost:8080/portfolio/see/user"
+  //url: string = "http://localhost:8080/portfolio/see/user"
+  url: string = "https://appportfoliobackendarg.herokuapp.com"
   constructor(private _http: HttpClient) {
 
   }
@@ -22,7 +23,7 @@ export class UsuarioService {
 
       })
     }
-    return this._http.get(this.url);
+    return this._http.get(this.url+"/see/all");
   }
 
   getUsuario(): Observable<any> {
@@ -34,7 +35,7 @@ export class UsuarioService {
 
       })
     }
-    return this._http.get(this.url + "/" + 1);
+    return this._http.get(this.url + "/portfolio/see/user/" + 1);
   }
 
   updateUsuario(usuario: Usuario): Observable<any> {
@@ -48,10 +49,10 @@ export class UsuarioService {
     }
     console.log(usuario.userId);
     console.log(usuario);
-    return this._http.put<any>("http://localhost:8080/portfolio/edit/" + usuario.userId, usuario);
+    return this._http.put<any>(this.url + "/portfolio/edit/" + usuario.userId, usuario);
   }
 
-  createdUsuario(usuario:Usuario) {
+  createdUsuario(usuario: Usuario) {
     const httpOptions = {
       headers: new HttpHeaders({
 
@@ -61,6 +62,6 @@ export class UsuarioService {
       })
     }
     console.log(usuario);
-    return this._http.post<any>("http://localhost:8080/portfolio/new/",usuario);
+    return this._http.post<any>(this.url + "/portfolio/new/", usuario);
   }
 }

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class SkillService {
 
-  url: string = "http://localhost:8080/skills/see/all"
+  url: string = "https://appportfoliobackendarg.herokuapp.com"
 
   constructor(private _http: HttpClient) {
 
@@ -22,6 +22,6 @@ export class SkillService {
 
       })
     }
-    return this._http.get(this.url);
+    return this._http.get(this.url+"/skills/see/all");
   }
 }
