@@ -1,37 +1,50 @@
-<div class="bg-img">
-    <div class="content">
-        <button class="btn btn-lg btn-primary  mb-3 p-3" (click)="volver()"><i class="fa fa-arrow-circle-left"
-                aria-hidden="true">         Volver </i>
-        </button>
-        <header>Login Form</header>
-        <form action="" (ngSubmit)="login()" novalidate>
-            <div class="field">
-                <span class="fa fa-user" for="userName"></span>
-                <input type="text" [(ngModel)]="user.username" name="userName" id="userName" required placeholder="Username o Email">
+<body>
+    <div class="container" style="background-image: url();">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <button class="btn btn-lg  mb-5 p-3" (click)="volver()"><i class="fa fa-arrow-circle-left"
+                        aria-hidden="true"> Volver </i>
+                </button>
+                <form action="" class="form ">
+                    <input id="noaccount" name="radioaccount" type="radio" class="radio radio--invisible" checked />
+                    <input id="account" name="radioaccount" type="radio" class="radio radio--invisible" />
+                    <div class="form_background">
+                        <div class="form-group form-group--account">
+                            <h3 class="form-group_title">Log in</h3>
+                            <input class="form-group_input" type="text" [(ngModel)]="user.username" name="userName"
+                                id="userName" placeholder="Username o Usuario" />
+                            <input class="form-group_input" type="password" [(ngModel)]="user.password" name="password"
+                                placeholder="Password o Contraseña" />
+                            <button class="button button--form" (click)="login()">Acceder</button>
+                        </div>
+                        <div class="form-group form-group--noaccount">
+                            <h3 class="form-group_title">Sign up</h3>
+                            <input class="form-group_input" type="text" name="username" id="username"
+                                [(ngModel)]="usuario.nombre" placeholder="Full Name o Nombre" />
+                            <input class="form-group_input" type="email" placeholder="Email" />
+                            <input class="form-group_input" type="password" name="password"
+                                [(ngModel)]="usuario.apellido" id="password" placeholder="Password o Nontraseña" />
+                            <button class="button button--form " (click)="createdUsuario()">Sign up</button>
+                        </div>
+                    </div>
+                    <fieldset class="fieldset">
+                        <h2>No tienes una cuenta ?</h2>
+                        <p>Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.
+                        </p>
+                        <div class="form_content form_content--noaccount">
+                        </div>
+                        <label for="noaccount" class="button">Signup</label>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <h2>Tienes una cuenta? accede ahora!</h2>
+                        <p>Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.
+                        </p>
+                        <div class="form_content form_content--noaccount">
+                        </div>
+                        <label for="account" class="button">login</label>
+                    </fieldset>
+                </form>
             </div>
-            <div class="field space">
-                <span class="fa fa-lock"></span>
-                <input type="password" [(ngModel)]="user.password" name="password"  class="pass-key" required placeholder="Password">
-                <span class="show" for="password">SHOW</span>
-            </div>
-            <div class="pass">
-                <a href="#">Forgot Password?</a>
-            </div>
-            <div class="field">
-                <input type="submit" value="LOGIN">
-            </div>
-        </form>
-        <div class="login">Or login with</div>
-        <div class="links">
-            <div class="facebook">
-                <i class="fa fa-facebook-f"><span>Facebook</span></i>
-            </div>
-            <div class="instagram">
-                <i class="fa fa-instagram"><span>Instagram</span></i>
-            </div>
-        </div>
-        <div class="signup">Don't have account?
-            <a href="#" (click)="createdAccount()">Signup Now</a>
         </div>
     </div>
-</div>
+</body>

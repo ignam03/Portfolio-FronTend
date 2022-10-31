@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from './../../models/usuario/usuario';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { TokenService } from './../../services/token/token.service';
@@ -21,8 +22,9 @@ export class LoginComponent implements OnInit {
   usuario!: Usuario
 
 
-  constructor(private router: Router, private authSvc: AuthService, private tokenSvc: TokenService, private UsuarioSvc: UsuarioService) {
+  constructor(private router: Router, private authSvc: AuthService, private tokenSvc: TokenService, private UsuarioSvc: UsuarioService, private toastrSvc:ToastrService) {
     this.user = new User();
+    this.usuario = new Usuario();
   }
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
       console.log(result.token);
       this.isLogged = true;
       console.log(this.isLogged);
+      this.toastrSvc.info("Loggin successfully");
       //this.reloadPage();
       // this.UsuarioSvc.getUsuario().subscribe(result => {
       //   console.log(result);
@@ -68,5 +71,15 @@ export class LoginComponent implements OnInit {
 
   createdAccount(){
     this.router.navigate(['/register'])
+  }
+
+  createdUsuario(){
+    this.usuario.titulo=" ";
+    this.usuario.descripcion=" ";
+    console.log(this.usuario);
+    this.UsuarioSvc.createdUsuario(this.usuario).subscribe(data => {
+      this.toastrSvc.success("Usuario has been created");
+      this.router.navigate(['/']);
+    })
   }
 }
