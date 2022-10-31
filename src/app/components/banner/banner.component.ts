@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { TokenService } from './../../services/token/token.service';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { Usuario } from './../../models/usuario/usuario';
@@ -12,9 +13,9 @@ export class BannerComponent implements OnInit {
 
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
-  isLogged=false;
+  isLogged = false;
 
-  constructor(private usuarioSvc: UsuarioService, private tokenService: TokenService) {
+  constructor(private usuarioSvc: UsuarioService, private tokenService: TokenService, private toastrSvc: ToastrService) {
     this.usuario = new Usuario();
   }
 
@@ -39,6 +40,7 @@ export class BannerComponent implements OnInit {
   updateUsuario(): void {
     this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
       console.log("funciona(?");
+      this.toastrSvc.info("Usuario updated successfully");
     })
   }
 }
