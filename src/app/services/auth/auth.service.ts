@@ -21,7 +21,6 @@ export class AuthService {
     }
 
     let body = JSON.stringify({ username: username, password: password })
-    console.log(body);
     return this._http.post(this.url + 'signin', body, httpOptions);
   }
 

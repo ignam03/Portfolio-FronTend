@@ -2,6 +2,43 @@
 <section class="skills mb-5" id="skills">
     <div class="max-width">
         <h2 class="title">Mis skills</h2>
+        <body>
+            <div class="container">
+                <a class="button" href="#popup" *ngIf="isLogged">Agregar skill</a>
+                <div class="popup" id="popup">
+                    <div class="popup-inner">
+                        <div class="popupphoto">
+                            <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
+                                alt="">
+                        </div>
+                        <div class="popuptext">
+                            <h1>Agrega Tegnologia</h1>
+                            <p><a href="https://github.com/ignam03">Visitar Github</a></p>
+                            <div class="container">
+                                <form id="contact" action="" method="post">
+                                    <h3>Tegnologia</h3>
+                                    <h4></h4>
+                                    <fieldset>
+                                        <input placeholder="Nombre de la tegnologia" id="idNombreTec" name="nombreTec"
+                                            [(ngModel)]="skillLoad.nombreHab" type="text" tabindex="1" required
+                                            autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input placeholder="Porcentaje" id="idPorcentaje" name="porcentaje"
+                                            [(ngModel)]="skillLoad.porcentaje" type="text" tabindex="2" required>
+                                    </fieldset>
+                                    <fieldset>
+                                        <button name="submit" type="submit" id="contact-submit"
+                                            data-submit="...Sending" (click)="createdSkill()">Agregar</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        <a class="closepopup" href="#">X</a>
+                    </div>
+                </div>
+            </div>
+        </body>
         <div class="skills-content">
             <div class="column left">
                 <div class="text">Mis skills & experiencia.</div>
@@ -14,40 +51,50 @@
             </div>
             <div class="column right">
                 <div class="bars" *ngFor="let skill of habilidades">
+                    <body>
+                        <div class="container" >
+                            <a class="button fa fa-pencil" href="#popup1" *ngIf="isLogged" (click)="loadSkill(skill.habId)"></a>
+                            <a class="button fa fa-trash" href="#popup2" *ngIf="isLogged" (click)="deleteSkill(skill.habId)"></a>
+                            <div class="popup" id="popup1">
+                                <div class="popup-inner">
+                                    <div class="popupphoto">
+                                        <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
+                                            alt="">
+                                    </div>
+                                    <div class="popuptext">
+                                        <h1>Actualizar Tegnologia</h1>
+                                        <p><a href="https://github.com/ignam03">Visitar Github</a></p>
+                                        <div class="container">
+                                            <form id="contact" action="" method="post">
+                                                <h3>Tegnologia</h3>
+                                                <h4></h4>
+                                                <fieldset>
+                                                    <input placeholder="Nombre de la tegnologia" id="idNombreTec" name="nombreTec"
+                                                        [(ngModel)]="skillLoad.nombreHab" placeholder="{skillLoad.nombreHab}" type="text" tabindex="1" required
+                                                        autofocus>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <input placeholder="Porcentaje" id="idPorcentaje" name="porcentaje"
+                                                        [(ngModel)]="skillLoad.porcentaje" placeholder="skillLoad.nombreHab" type="text" tabindex="2" required>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <button name="submit" type="submit" id="contact-submit"
+                                                        data-submit="...Sending" (click)="createdSkill()">Actualizar</button>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <a class="closepopup" href="#">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
                     <div class="info">
                         <span> {{skill.nombreHab}}</span>
                         <span>{{skill.porcentaje}}%</span>
                     </div>
                     <div class="line html"></div>
                 </div>
-                <!-- <div class="bars">
-                    <div class="info">
-                        <span>Front-End Development</span>
-                        <span>80%</span>
-                    </div>
-                    <div class="line css"></div>
-                </div>
-                <div class="bars">
-                    <div class="info">
-                        <span>Back-End Development</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="line js"></div>
-                </div>
-                <div class="bars">
-                    <div class="info">
-                        <span>Database & Testing</span>
-                        <span>60%</span>
-                    </div>
-                    <div class="line php"></div>
-                </div>
-                <div class="bars">
-                    <div class="info">
-                        <span>3D-Modeling</span>
-                        <span>75%</span>
-                    </div>
-                    <div class="line mysql"></div>
-                </div> -->
             </div>
         </div>
     </div>

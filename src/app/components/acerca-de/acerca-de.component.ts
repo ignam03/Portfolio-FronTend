@@ -35,7 +35,6 @@ export class AcercaDeComponent implements OnInit {
 
   updateUsuario(usuario: Usuario): void {
     this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
-      console.log("funciona(?");
     })
   }
 

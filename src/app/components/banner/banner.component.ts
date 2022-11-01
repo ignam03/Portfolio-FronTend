@@ -39,8 +39,8 @@ export class BannerComponent implements OnInit {
 
   updateUsuario(): void {
     this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
-      console.log("funciona(?");
       this.toastrSvc.info("Usuario updated successfully");
+      window.location.reload();
     })
   }
 }

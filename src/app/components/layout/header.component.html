@@ -3,14 +3,14 @@
 </div>
 <nav class="navbar">
     <div class="max-width">
-        <div class="logo"><a href="#">{{usuario.nombre}}.Dev</a></div>
+        <div class="logo text-start"><a href="#" class="text-tart">{{usuario.nombre}}.Dev</a></div>
         <ul class="menu">
             <li><a href="#home" class="menu-btn">Home</a></li>
             <li><a href="#about" class="menu-btn">Sobre mí</a></li>
+            <li><a href="#about" class="menu-btn">Educacion</a></li>
             <li><a href="#skills" class="menu-btn">Skills</a></li>
-            <li><a href="#services" class="menu-btn">Portfolio</a></li>
-            <li><a href="#contact" class="menu-btn">Contact</a></li>
-            <li><a class="menu-btn " (click)="login()" *ngIf="!isLogged">Login</a></li>
+            <li><a href="#projects" class="menu-btn">Proyectos</a></li>
+            <li><a class=" menu-btn " (click)="login()" *ngIf="!isLogged">Login</a></li>
             <li><a class="menu-btn " (click)="logout()" *ngIf="isLogged">Logout</a></li>
         </ul>
         <div class="menu-btn">
