@@ -23,7 +23,7 @@ export class UsuarioService {
 
       })
     }
-    return this._http.get(this.url+"/see/all");
+    return this._http.get(this.url+"/portfolio/see/all");
   }
 
   getUsuario(): Observable<any> {
@@ -47,8 +47,6 @@ export class UsuarioService {
 
       })
     }
-    console.log(usuario.userId);
-    console.log(usuario);
     return this._http.put<any>(this.url + "/portfolio/edit/" + usuario.userId, usuario);
   }
 
@@ -61,7 +59,6 @@ export class UsuarioService {
 
       })
     }
-    console.log(usuario);
     return this._http.post<any>(this.url + "/portfolio/new/", usuario);
   }
 }
