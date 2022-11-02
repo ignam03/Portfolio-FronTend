@@ -21,7 +21,6 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarUsuario();
-    this.cargarUsuario();
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
