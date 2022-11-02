@@ -192,11 +192,11 @@
                         <div class="vertical-line">
                             <div id="post-1" class="vesti-col timeline-post" *ngFor="let experience of experienceList">
                                 <div class="vesti-content-wrapper mt-5 text-end">
-                                    <a class="button fa fa-pencil" href="#popup12" *ngIf="isLogged"
+                                    <a class="button fa fa-pencil" href="#popup15" *ngIf="isLogged"
                                         (click)="loadExperience(experience.expId)"></a>
                                     <a class="button fa fa-trash" href="#popup2" *ngIf="isLogged"
                                         (click)="deleteExperience(experience.expId)"></a>
-                                    <div class="popup" id="popup12">
+                                    <div class="popup" id="popup15">
                                         <div class="popup-inner mt-5">
                                             <div class="popupphoto">
                                                 <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
@@ -231,7 +231,7 @@
                                                         <fieldset>
                                                             <button name="submit" type="submit" id="contact-submit"
                                                                 data-submit="...Sending"
-                                                                (click)="createdExperience()">Agregar</button>
+                                                                (click)="updateExperience()">Actualizar</button>
                                                         </fieldset>
                                                     </form>
                                                 </div>

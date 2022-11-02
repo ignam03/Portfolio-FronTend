@@ -1,3 +1,5 @@
+import { UsuarioService } from './../../services/usuario/usuario.service';
+import { Usuario } from './../../models/usuario/usuario';
 import { ToastrService } from 'ngx-toastr';
 import { TokenService } from './../../services/token/token.service';
 import { Experiencia } from './../../models/experiencia/experiencia';
@@ -21,13 +23,15 @@ export class EducacionComponent implements OnInit {
   expLoad!: Experiencia;
   experienceList!: Array<Experiencia>;
   isLogged = false;
+  usuario!: Usuario;
 
-  constructor(private educacionSvc: EducacionService, private experienceSvc: ExperienciaService, private activatedRoute: ActivatedRoute, private tokenService: TokenService, private toastrSvc: ToastrService) {
+  constructor(private educacionSvc: EducacionService, private experienceSvc: ExperienciaService, private activatedRoute: ActivatedRoute, private tokenService: TokenService, private toastrSvc: ToastrService, private usuarioSvc: UsuarioService) {
     this.educacion = new Educacion();
     this.experience = new Experiencia();
   }
 
   ngOnInit(): void {
+    this.cargarUsuario();
     this.cargarEducacionList();
     this.loadAllExp();
     this.activatedRoute.params.subscribe((params: any) => {
@@ -41,6 +45,13 @@ export class EducacionComponent implements OnInit {
     }
   }
 
+  cargarUsuario() {
+    this.usuarioSvc.getUsuario().subscribe(result => {
+      this.usuario = new Usuario();
+      Object.assign(this.usuario, result)
+    })
+  }
+
 
   cargarEducacionList() {
     this.educacionSvc.getEduTodas().subscribe(result => {
@@ -51,6 +62,7 @@ export class EducacionComponent implements OnInit {
         Object.assign(this.educacion, element);
         this.educacionList.push(this.educacion);
         console.log(this.educacion)
+        console.log(this.usuario);
       })
     })
   }
@@ -58,15 +70,16 @@ export class EducacionComponent implements OnInit {
 
   loadEducation(id: number) {
     this.eduLoad = new Educacion();
-    this.educacionSvc.getEducation(id).subscribe(result => {
-      console.log(result);
-      Object.assign(this.eduLoad, result);
-      console.log(this.eduLoad)
-    })
+    if (this.tokenService.getToken()) {
+      this.educacionSvc.getEducation(id).subscribe(result => {
+        console.log(result);
+        Object.assign(this.eduLoad, result);
+        console.log(this.eduLoad)
+      })
+    }
   }
 
   updateEducation() {
-    console.log(this.eduLoad);
     this.educacionSvc.updateEducation(this.eduLoad).subscribe(result => {
       console.log("actualizado creo");
       this.toastrSvc.info("Education has update successfully");
@@ -76,8 +89,9 @@ export class EducacionComponent implements OnInit {
 
   createdEducation() {
     console.log(this.eduLoad);
-    this.educacionSvc.createdEducation(this.eduLoad).subscribe(result => {
+    this.educacionSvc.createdEducation(this.eduLoad, this.usuario.userId).subscribe(result => {
       this.toastrSvc.success("Education has created successfully");
+      console.log(this.usuario);
       window.location.reload();
     })
     this.eduLoad = new Educacion();
@@ -108,11 +122,13 @@ export class EducacionComponent implements OnInit {
 
   loadExperience(id: number) {
     this.expLoad = new Experiencia();
-    this.experienceSvc.getExperience(id).subscribe(result => {
-      console.log(result);
-      Object.assign(this.expLoad, result);
-      console.log(this.expLoad)
-    })
+    if (this.tokenService.getToken()) {
+      this.experienceSvc.getExperience(id).subscribe(result => {
+        console.log(result);
+        Object.assign(this.expLoad, result);
+        console.log(this.expLoad)
+      })
+    }
   }
 
   updateExperience() {
@@ -125,7 +141,7 @@ export class EducacionComponent implements OnInit {
 
   createdExperience() {
     console.log(this.expLoad);
-    this.experienceSvc.createdExperience(this.expLoad).subscribe(result => {
+    this.experienceSvc.createdExperience(this.expLoad, this.usuario.userId).subscribe(result => {
       this.toastrSvc.success("Experience created successfully");
       window.location.reload();
     })
