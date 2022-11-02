@@ -1,3 +1,5 @@
+import { UsuarioService } from './../../services/usuario/usuario.service';
+import { Usuario } from './../../models/usuario/usuario';
 import { ActivatedRoute } from '@angular/router';
 import { TokenService } from './../../services/token/token.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,14 +19,17 @@ export class SkillsComponent implements OnInit {
   habilidad!: Habilidad;
   habilidades!: Array<Habilidad>;
   isLogged!: boolean;
+  usuario!: Usuario;
 
-  constructor(private habilidadSvc: SkillService, private toastrSvc: ToastrService, private tokenService: TokenService, private activatedRoute:ActivatedRoute) {
+  constructor(private habilidadSvc: SkillService, private toastrSvc: ToastrService, private tokenService: TokenService, private activatedRoute:ActivatedRoute
+    ,private usuarioSvc: UsuarioService) {
     this.skillLoad = new Habilidad();
     this.habilidad = new Habilidad();
     this.isLogged = false;
   }
 
   ngOnInit(): void {
+    this.cargarUsuario();
     this.cargarSkills();
     this.activatedRoute.params.subscribe((params: any) => {
       this.loadSkill(params['id'])
@@ -34,6 +39,13 @@ export class SkillsComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
+  }
+
+  cargarUsuario() {
+    this.usuarioSvc.getUsuario().subscribe(result => {
+      this.usuario = new Usuario();
+      Object.assign(this.usuario, result)
+    })
   }
 
   cargarSkills() {
@@ -49,9 +61,11 @@ export class SkillsComponent implements OnInit {
 
   loadSkill(id: number) {
     this.skillLoad = new Habilidad();
-    this.habilidadSvc.getSkill(id).subscribe(result => {
-      Object.assign(this.skillLoad, result);
-    })
+    if (this.tokenService.getToken()) {
+      this.habilidadSvc.getSkill(id).subscribe(result => {
+        Object.assign(this.skillLoad, result);
+      })
+    }
   }
 
   updateSkill() {
@@ -64,7 +78,7 @@ export class SkillsComponent implements OnInit {
 
   createdSkill() {
     console.log(this.skillLoad);
-    this.habilidadSvc.createdSkill(this.skillLoad).subscribe(result => {
+    this.habilidadSvc.createdSkill(this.skillLoad,this.usuario.userId).subscribe(result => {
       this.toastrSvc.success("Skill has created successfully");
       window.location.reload();
     })
