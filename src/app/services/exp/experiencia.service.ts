@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class ExperienciaService {
 
   url: string = 'https://appportfoliobackendarg.herokuapp.com/experience/';
-
+  //url:string="http://localhost:8080/experience/"
   constructor(private _http: HttpClient) {
 
   }
@@ -51,7 +51,7 @@ export class ExperienciaService {
     return this._http.put<any>(this.url + "edit/" + experience.expId, experience);
   }
 
-  createdExperience(experience: Experiencia): Observable<any> {
+  createdExperience(experience: Experiencia,idUser:number): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
 
@@ -60,8 +60,7 @@ export class ExperienciaService {
 
       })
     }
-    console.log(experience);
-    return this._http.post(this.url + 'new', experience)
+    return this._http.post(this.url + 'new/'+idUser, experience)
   }
 
   deleteExperience(id: number): Observable<any> {

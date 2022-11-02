@@ -51,7 +51,7 @@ export class SkillService {
     return this._http.put<any>(this.url + "edit/" + skill.habId, skill);
   }
 
-  createdSkill(skill: Habilidad): Observable<any> {
+  createdSkill(skill: Habilidad, idUser:number): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
 
@@ -60,7 +60,7 @@ export class SkillService {
 
       })
     }
-    return this._http.post(this.url + 'new', skill)
+    return this._http.post(this.url + 'new/'+idUser, skill)
   }
 
   deleteSkill(id: number): Observable<any> {

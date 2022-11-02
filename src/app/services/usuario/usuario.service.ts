@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  //url: string = "http://localhost:8080/portfolio/see/user"
+  //url: string = "http://localhost:8080"
   url: string = "https://appportfoliobackendarg.herokuapp.com"
   constructor(private _http: HttpClient) {
 
