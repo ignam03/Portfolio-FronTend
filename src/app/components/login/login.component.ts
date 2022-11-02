@@ -37,16 +37,16 @@ export class LoginComponent implements OnInit {
   login() {
     // this.username = "igna3";
     // this.password = "123root";
-    console.log(this.user.username)
-    console.log(this.user.password)
+    //console.log(this.user.username)
+    //console.log(this.user.password)
     this.authSvc.login(this.user.username, this.user.password).subscribe(result => {
-      console.log(result.token);
-      console.log(result)
+      //console.log(result.token);
+      //console.log(result)
       this.tokenSvc.setToken(result.token);
-      console.log(result.token);
+      //console.log(result.token);
       this.isLogged = true;
-      console.log(this.isLogged);
-      this.toastrSvc.info("Loggin successfully");
+      //console.log(this.isLogged);
+      this.toastrSvc.success("Loggin successfully");
       //this.reloadPage();
       // this.UsuarioSvc.getUsuario().subscribe(result => {
       //   console.log(result);
@@ -57,7 +57,8 @@ export class LoginComponent implements OnInit {
       // })
       this.router.navigate(['/'])
     }, err => {
-      console.log(err);
+      this.toastrSvc.error("Username or password incorrect");
+      //console.log(err);
     })
 
   }
