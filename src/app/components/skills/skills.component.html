@@ -2,6 +2,14 @@
 <section class="skills mb-5" id="skills">
     <div class="max-width">
         <h2 class="title">Mis skills</h2>
+        <div class="column left text-center">
+            <div class="text-per1">Mis skills & experiencia.</div>
+            <p style="" class=" text-per" >
+                Me especializo en el desarrollo de aplicaciones web tipo SPA con Angular, Typescript , Javascript,
+                Java y NodeJs.
+            </p>
+            <a class="mb-3 btn-per" href="https://github.com/ignam03" target="_blank">Github <i class="fa fa-github"></i></a>
+        </div>
         <body>
             <div class="container">
                 <a class="button" href="#popup9" *ngIf="isLogged">Agregar skill</a>
@@ -27,8 +35,8 @@
                                             [(ngModel)]="skillLoad.porcentaje" type="text" tabindex="2" required>
                                     </fieldset>
                                     <fieldset>
-                                        <button name="submit" type="submit" id="contact-submit"
-                                            data-submit="...Sending" (click)="createdSkill()">Agregar</button>
+                                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending"
+                                            (click)="createdSkill()">Agregar</button>
                                     </fieldset>
                                 </form>
                             </div>
@@ -39,20 +47,17 @@
             </div>
         </body>
         <div class="skills-content">
-            <div class="column left">
-                <div class="text">Mis skills & experiencia.</div>
-                <p>
-                    Me especializo en el desarrollo de aplicaciones web tipo SPA con Angular, Typescript , Javascript, Java y NodeJs.
-                </p>
-                <a href="https://github.com/ignam03" target="_blank">Github   <i
-                        class="fa fa-github"></i></a>
-            </div>
+            
             <div class="column right">
                 <div class="bars" *ngFor="let skill of habilidades">
                     <body>
-                        <div class="container" >
-                            <a class="button fa fa-pencil" href="#popup1" *ngIf="isLogged" (click)="loadSkill(skill.habId)"></a>
-                            <a class="button fa fa-trash" href="#popup2" *ngIf="isLogged" (click)="deleteSkill(skill.habId)"></a>
+                        <div class="container align-content-end">
+                            <div class="align-content-center">
+                                <a class="button fa fa-pencil " href="#popup1" 
+                                (click)="loadSkill(skill.habId)"></a>
+                            <a class="button fa fa-trash" href="#popup2" 
+                                (click)="deleteSkill(skill.habId)"></a>
+                            </div>
                             <div class="popup" id="popup1">
                                 <div class="popup-inner mt-5">
                                     <div class="popupphoto">
@@ -66,17 +71,21 @@
                                                 <h3 class="text-center">Tegnologia</h3>
                                                 <h4></h4>
                                                 <fieldset>
-                                                    <input placeholder="Nombre de la tegnologia" id="idNombreTec" name="nombreTec"
-                                                        [(ngModel)]="skillLoad.nombreHab" placeholder="{skillLoad.nombreHab}" type="text" tabindex="1" required
-                                                        autofocus>
+                                                    <input placeholder="Nombre de la tegnologia" id="idNombreTec"
+                                                        name="nombreTec" [(ngModel)]="skillLoad.nombreHab"
+                                                        placeholder="{skillLoad.nombreHab}" type="text" tabindex="1"
+                                                        required autofocus>
                                                 </fieldset>
                                                 <fieldset>
                                                     <input placeholder="Porcentaje" id="idPorcentaje" name="porcentaje"
-                                                        [(ngModel)]="skillLoad.porcentaje" placeholder="skillLoad.nombreHab" type="text" tabindex="2" required>
+                                                        [(ngModel)]="skillLoad.porcentaje"
+                                                        placeholder="skillLoad.nombreHab" type="text" tabindex="2"
+                                                        required>
                                                 </fieldset>
                                                 <fieldset>
                                                     <button name="submit" type="submit" id="contact-submit"
-                                                        data-submit="...Sending" (click)="updateSkill()">Actualizar</button>
+                                                        data-submit="...Sending"
+                                                        (click)="updateSkill()">Actualizar</button>
                                                 </fieldset>
                                             </form>
                                         </div>
@@ -86,11 +95,13 @@
                             </div>
                         </div>
                     </body>
-                    <div class="info">
-                        <span> {{skill.nombreHab}}</span>
-                        <span>{{skill.porcentaje}}%</span>
+                    <div class="info text-decoration-underline">
+                        <span class="text-center"> {{skill.nombreHab}}</span>
                     </div>
-                    <div class="line html"></div>
+                            <circle-progress class="m-3"  [percent]="skill.porcentaje" [radius]="90" [outerStrokeWidth]="8"
+                                [innerStrokeWidth]="8" [outerStrokeColor]="'#dc143c'" [innerStrokeColor]="'#ca4a64'"
+                                [animation]="true" [animationDuration]="300"></circle-progress>
+                    
                 </div>
             </div>
         </div>

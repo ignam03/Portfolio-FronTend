@@ -21,6 +21,8 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './components/register/register.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +50,15 @@ import { RegisterComponent } from './components/register/register.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    })
   ],
   providers: [
     authInterceptorProviders

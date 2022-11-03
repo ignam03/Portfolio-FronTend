@@ -51,10 +51,10 @@ footer {
 .services .serv-content,
 .skills .skills-content,
 .contact .contact-content {
-  display: flex;
+  display: block;
+  position: relative;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
 }
 
 section .title {
@@ -95,7 +95,8 @@ section .title::after {
 }
 
 .skills .skills-content .column {
-  width: calc(50% - 30px);
+  display:flex;
+  flex-wrap: wrap;
 }
 
 .skills .skills-content .left .text {
@@ -108,7 +109,35 @@ section .title::after {
   text-align: justify;
 }
 
-.skills .skills-content .left a {
+.btn-per{
+  display: inline-block;
+  background: crimson;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 16px;
+  margin-top: 20px;
+  border-radius: 6px;
+  border: 2px solid crimson;
+  transition: all 0.3s ease;
+}
+
+.btn-per:hover{
+  color: crimson;
+  background: none;
+}
+
+.text-per{
+
+}
+
+.text-per1{
+  font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.skills .skills-content .left .btn-per a {
   display: inline-block;
   background: crimson;
   color: #fff;
@@ -268,6 +297,8 @@ section .title::after {
   .contact .contact-content .column {
     width: 100%;
     margin-bottom: 35px;
+    text-align: center;
+    display: flex;
   }
 }
 
@@ -362,7 +393,7 @@ body {
   border-radius: 1.5rem;
   background-color: #dc143c;
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 0.7rem 1rem;
   font-weight: 900;
 }
 
@@ -472,6 +503,7 @@ body {
   -o-font-smoothing: antialiased;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  
 }
 
 body {
@@ -486,7 +518,7 @@ body {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
-  position: relative;
+  display: inline-block;
 }
 
 #contact input[type="text"],
