@@ -4,5 +4,6 @@ export class Experiencia {
     tituloExp!: string;
     descExp!: string;
     imgExp!: string;
-    fechaExp!: string;
+    fechaIniExp!:Date;
+    fechaFinExp!:Date;
 }

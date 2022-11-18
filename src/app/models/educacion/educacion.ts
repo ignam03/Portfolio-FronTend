@@ -4,7 +4,8 @@ export class Educacion {
     titulo!: string;
     nombreInstituacion!: string;
     descripcionEdu!: string;
-    fechaEdu!: number;
+    fechaIni!: Date;
+    fechaFin!:Date;
     imagEdu!:string;
 
 }
