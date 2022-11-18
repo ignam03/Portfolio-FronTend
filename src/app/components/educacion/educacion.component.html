@@ -33,8 +33,15 @@
                                                 autofocus>
                                         </fieldset>
                                         <fieldset>
-                                            <input placeholder="Fecha " id="idFecha" name="fecha"
-                                                [(ngModel)]="eduLoad.fechaEdu" type="text" tabindex="1" required
+                                            <label for="">Fecha Inicio</label>
+                                            <input placeholder="Fecha Inicio" id="idFechaIni" name="fechaIni"
+                                                [(ngModel)]="eduLoad.fechaIni" type="date" tabindex="1" required
+                                                autofocus>
+                                        </fieldset>
+                                        <fieldset>
+                                            <label for="">Fecha Fin</label>
+                                            <input placeholder="Fecha Fin" id="idFechaFin" name="fechaFin"
+                                                [(ngModel)]="eduLoad.fechaFin" type="date" tabindex="1" required
                                                 autofocus>
                                         </fieldset>
                                         <fieldset>
@@ -92,8 +99,13 @@
                                                             tabindex="1" required autofocus>
                                                     </fieldset>
                                                     <fieldset>
-                                                        <input placeholder="Fecha " id="idFecha" name="fecha"
-                                                            [(ngModel)]="eduLoad.fechaEdu" type="text" tabindex="1"
+                                                        <input placeholder="Fecha Inicio" id="idFechaIni" name="fechaIni"
+                                                            [(ngModel)]="eduLoad.fechaIni" type="date" tabindex="1"
+                                                            required autofocus>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <input placeholder="Fecha Fin" id="idFechaFin" name="fechaFin"
+                                                            [(ngModel)]="eduLoad.fechaFin" type="date" tabindex="1"
                                                             required autofocus>
                                                     </fieldset>
                                                     <fieldset>
@@ -116,9 +128,9 @@
                                     <img src="{{educacion.imagEdu}}">
                                     <div class="vesti-date-wrapper">
                                         <div class="vesti-date">
-                                            <span class="day">14</span>
+                                            <span class="day">{{dates}}</span>
                                             <br>
-                                            <span class="month">{{educacion.fechaEdu}}</span>
+                                            <span class="month">{{educacion.fechaIni}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -164,8 +176,15 @@
                                                     autofocus>
                                             </fieldset>
                                             <fieldset>
-                                                <input placeholder="Fecha " id="idFechaExp" name="fechaExp"
-                                                    [(ngModel)]="expLoad.fechaExp" type="text" tabindex="1" required
+                                                <label for="">Fecha Inicio</label>
+                                                <input placeholder="Fecha Inicio" id="idFechaExpIni" name="fechaExpIni"
+                                                    [(ngModel)]="expLoad.fechaIniExp" type="date" tabindex="1" required
+                                                    autofocus>
+                                            </fieldset>
+                                            <fieldset>
+                                                <label for="">Fecha Fin</label>
+                                                <input placeholder="Fecha Fin" id="idFechaExpFin" name="fechaExpFin"
+                                                    [(ngModel)]="expLoad.fechaFinExp" type="date" tabindex="1" required
                                                     autofocus>
                                             </fieldset>
                                             <fieldset>
@@ -219,8 +238,13 @@
                                                                 tabindex="1" required autofocus>
                                                         </fieldset>
                                                         <fieldset>
-                                                            <input placeholder="Fecha " id="idFechaExp" name="fechaExp"
-                                                                [(ngModel)]="expLoad.fechaExp" type="text" tabindex="1"
+                                                            <input placeholder="Fecha Inicio" id="idFechaExpIni" name="fechaExpIni"
+                                                                [(ngModel)]="expLoad.fechaIniExp" type="date" tabindex="1"
+                                                                required autofocus>
+                                                        </fieldset>
+                                                        <fieldset>
+                                                            <input placeholder="Fecha Fin" id="idFechaExpFin" name="fechaExpFin"
+                                                                [(ngModel)]="expLoad.fechaFinExp" type="date" tabindex="1"
                                                                 required autofocus>
                                                         </fieldset>
                                                         <fieldset>
@@ -245,7 +269,7 @@
                                             <div class="vesti-date">
                                                 <span class="day">14</span>
                                                 <br>
-                                                <span class="month">{{experience.fechaExp}}</span>
+                                                <span class="month">{{experience.fechaIniExp}}</span>
                                             </div>
                                         </div>
                                     </div>

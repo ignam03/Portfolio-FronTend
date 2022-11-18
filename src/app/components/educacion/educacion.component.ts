@@ -24,10 +24,12 @@ export class EducacionComponent implements OnInit {
   experienceList!: Array<Experiencia>;
   isLogged = false;
   usuario!: Usuario;
+  dates!: Array<Date>;
 
   constructor(private educacionSvc: EducacionService, private experienceSvc: ExperienciaService, private activatedRoute: ActivatedRoute, private tokenService: TokenService, private toastrSvc: ToastrService, private usuarioSvc: UsuarioService) {
     this.educacion = new Educacion();
     this.experience = new Experiencia();
+    this.dates = new Array<Date>();
   }
 
   ngOnInit(): void {
@@ -61,8 +63,6 @@ export class EducacionComponent implements OnInit {
         this.educacion = new Educacion();
         Object.assign(this.educacion, element);
         this.educacionList.push(this.educacion);
-        console.log(this.educacion)
-        console.log(this.usuario);
       })
     })
   }
