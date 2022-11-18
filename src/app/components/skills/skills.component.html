@@ -54,9 +54,9 @@
                         <div class="container align-content-end">
                             <div class="align-content-center">
                                 <a class="button fa fa-pencil " href="#popup1" 
-                                (click)="loadSkill(skill.habId)"></a>
+                                (click)="loadSkill(skill.habId)" *ngIf="isLogged"></a>
                             <a class="button fa fa-trash" href="#popup2" 
-                                (click)="deleteSkill(skill.habId)"></a>
+                                (click)="deleteSkill(skill.habId)" *ngIf="isLogged"></a>
                             </div>
                             <div class="popup" id="popup1">
                                 <div class="popup-inner mt-5">
