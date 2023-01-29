@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class SkillService {
 
-  url: string = "https://appportfoliobackendarg.herokuapp.com/skills/"
+  url: string = "https://portfolio-backend-production-f68f.up.railway.app/skills/"
   //url:string="http://localhost:8080/skills/";
 
   constructor(private _http: HttpClient) {

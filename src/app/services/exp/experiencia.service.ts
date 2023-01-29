@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class ExperienciaService {
 
-  url: string = 'https://appportfoliobackendarg.herokuapp.com/experience/';
+  url: string = 'https://portfolio-backend-production-f68f.up.railway.app/experience/';
   //url:string="http://localhost:8080/experience/"
   constructor(private _http: HttpClient) {
 

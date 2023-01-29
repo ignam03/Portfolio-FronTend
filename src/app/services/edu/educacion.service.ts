@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class EducacionService {
 
-  url: string = 'https://appportfoliobackendarg.herokuapp.com/education/';
+  url: string = 'https://portfolio-backend-production-f68f.up.railway.app/education/';
   //url:string="http://localhost:8080/education/"
   constructor(private _http: HttpClient) {
 
