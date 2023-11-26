@@ -1,29 +1,25 @@
 <!-- ABOUT SECTION -->
 <section class="about" id="about">
-    <div class="max-width">
-        <h2 class="title">Sobre mí</h2>
-        <div class="col-md-6 " >
-
-        </div>
-        <div class="about-content" *ngIf="isLogged">
-            <!-- <div class="column right">
+  <div class="max-width">
+    <h2 class="title">Sobre mí</h2>
+    <div class="col-md-6"></div>
+    <div class="about-content" *ngIf="isLogged">
+      <!-- <div class="column right">
                 <a href="" class="mb-2 ms-5">Editar</a>
             </div> -->
-        </div>
-        <div class="about-content">
-            <div class="column left">
-                <img src="{{usuario.fotoPerfil}}" alt="" />
-            </div>
-            <div class="column right">
-                <div class="text">
-                    Yo soy {{usuario.nombre}}. Soy <span class="typing-2">{{usuario.titulo}}</span>
-                </div>
-                <p contenteditable="false">
-                    {{usuario.descripcion}}.
-                </p>
-                <a href="https://github.com/ignam03"
-                    target="_blank">Visitar Github</a>
-            </div>
-        </div>
     </div>
+    <div class="about-content">
+      <div class="column left">
+        <img src="{{ usuario.imageProfile }}" alt="" />
+      </div>
+      <div class="column right">
+        <div class="text">
+          Yo soy {{ usuario.firstName }}. Soy
+          <span class="typing-2">{{ usuario.lastName }}</span>
+        </div>
+        <p contenteditable="false">{{ usuario.biography }}.</p>
+        <a href="https://github.com/ignam03" target="_blank">Visitar Github</a>
+      </div>
+    </div>
+  </div>
 </section>

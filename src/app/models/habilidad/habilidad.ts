@@ -1,6 +1,6 @@
 export class Habilidad {
 
-    habId!: number;
-    nombreHab!: string;
-    porcentaje!: number;
+    id!: number;
+    name!: string;
+    average!: number;
 }

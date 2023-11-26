@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
   }
 
   createdUsuario(){
-    this.usuario.titulo=" ";
-    this.usuario.descripcion=" ";
+    this.usuario.graduated=" ";
+    this.usuario.biography=" ";
     console.log(this.usuario);
     this.usarioSvc.createdUsuario(this.usuario).subscribe(data => {
       this.toastrSvc.success("Usuario has been created");

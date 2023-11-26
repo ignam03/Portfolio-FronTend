@@ -1,291 +1,504 @@
 <div class="container">
-    <div class="row">
-        <div class="col-10 m-auto">
-
-            <body>
-                <div class="container text-end">
-                    <a class="button fa fa-plus" href="#popup5" *ngIf="isLogged"> Agregar Educacion</a>
-                    <div class="popup" id="popup5">
-                        <div class="popup-inner mt-5">
-                            <div class="popupphoto">
-                                <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
-                                    alt="">
-                            </div>
-                            <div class="popuptext mt-5">
-                                <h1 class="text-center">Agregar Educacion</h1>
-                                <div class="container">
-                                    <form id="contact" action="" method="post">
-                                        <h3 class="text-center">Educacion</h3>
-                                        <h4></h4>
-                                        <fieldset>
-                                            <input placeholder="Titulo" id="idTitulo" name="titulo"
-                                                [(ngModel)]="eduLoad.titulo" type="text" tabindex="1" required
-                                                autofocus>
-                                        </fieldset>
-                                        <fieldset>
-                                            <input placeholder="Nombre de la Institucion" id="idIns" name="institucion"
-                                                [(ngModel)]="eduLoad.nombreInstituacion" type="text" tabindex="1"
-                                                required autofocus>
-                                        </fieldset>
-                                        <fieldset>
-                                            <input placeholder="Descripcion" id="idDesc" name="desc"
-                                                [(ngModel)]="eduLoad.descripcionEdu" type="text" tabindex="1" required
-                                                autofocus>
-                                        </fieldset>
-                                        <fieldset>
-                                            <label for="">Fecha Inicio</label>
-                                            <input placeholder="Fecha Inicio" id="idFechaIni" name="fechaIni"
-                                                [(ngModel)]="eduLoad.fechaIni" type="date" tabindex="1" required
-                                                autofocus>
-                                        </fieldset>
-                                        <fieldset>
-                                            <label for="">Fecha Fin</label>
-                                            <input placeholder="Fecha Fin" id="idFechaFin" name="fechaFin"
-                                                [(ngModel)]="eduLoad.fechaFin" type="date" tabindex="1" required
-                                                autofocus>
-                                        </fieldset>
-                                        <fieldset>
-                                            <input placeholder="Imagen de la institucion" id="idImg" name="imagen"
-                                                [(ngModel)]="eduLoad.imagEdu" type="text" tabindex="1" required
-                                                autofocus>
-                                        </fieldset>
-                                        <fieldset>
-                                            <button name="submit" type="submit" id="contact-submit"
-                                                data-submit="...Sending" (click)="createdEducation()">Agregar</button>
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                            <a class="closepopup " href="#education">X</a>
-                        </div>
-                    </div>
-                </div>
-            </body>
-            <h2 class="text-center mb-5" id="education">Educacion</h2>
-            <div class="container">
-                <div class="timeline clearfix">
-                    <div class="vertical-line">
-                        <div id="post-1" class="vesti-col timeline-post" *ngFor="let educacion of educacionList">
-                            <div class="vesti-content-wrapper mt-5 text-end">
-                                <a class="button fa fa-pencil" href="#popup11" *ngIf="isLogged"
-                                    (click)="loadEducation(educacion.eduId)"></a>
-                                <a class="button fa fa-trash" href="#popup2" *ngIf="isLogged"
-                                    (click)="deleteEducation(educacion.eduId)"></a>
-                                <div class="popup" id="popup11">
-                                    <div class="popup-inner mt-5">
-                                        <div class="popupphoto">
-                                            <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
-                                                alt="">
-                                        </div>
-                                        <div class="popuptext">
-                                            <h1 class="text-center">Actualizar Educacion</h1>
-                                            <div class="container">
-                                                <form id="contact" action="" method="post">
-                                                    <h3 class="text-center">Educacion</h3>
-                                                    <h4></h4>
-                                                    <fieldset>
-                                                        <input placeholder="Titulo" id="idTitulo" name="titulo"
-                                                            [(ngModel)]="eduLoad.titulo" type="text" tabindex="1"
-                                                            required autofocus>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <input placeholder="Nombre de la Institucion" id="idIns"
-                                                            name="institucion" [(ngModel)]="eduLoad.nombreInstituacion"
-                                                            type="text" tabindex="1" required autofocus>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <input placeholder="Descripcion" id="idDesc" name="desc"
-                                                            [(ngModel)]="eduLoad.descripcionEdu" type="text"
-                                                            tabindex="1" required autofocus>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <input placeholder="Fecha Inicio" id="idFechaIni" name="fechaIni"
-                                                            [(ngModel)]="eduLoad.fechaIni" type="date" tabindex="1"
-                                                            required autofocus>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <input placeholder="Fecha Fin" id="idFechaFin" name="fechaFin"
-                                                            [(ngModel)]="eduLoad.fechaFin" type="date" tabindex="1"
-                                                            required autofocus>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <input placeholder="Imagen de la institucion" id="idImg"
-                                                            name="imagen" [(ngModel)]="eduLoad.imagEdu" type="text"
-                                                            tabindex="1" required autofocus>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <button name="submit" type="submit" id="contact-submit"
-                                                            data-submit="...Sending"
-                                                            (click)="updateEducation()">Actualizar</button>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <a class="closepopup" href="#">X</a>
-                                    </div>
-                                </div>
-                                <div class="photo mt-2">
-                                    <img src="{{educacion.imagEdu}}">
-                                    <div class="vesti-date-wrapper">
-                                        <div class="vesti-date">
-                                            <span class="day">{{dates}}</span>
-                                            <br>
-                                            <span class="month">{{educacion.fechaIni}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vesti-desc">
-                                    <a class="desc-a" href="#">
-                                        <h4>{{educacion.titulo}}</h4>
-                                        <h3 class="text-black">{{educacion.nombreInstituacion}}</h3>
-                                    </a>
-                                    <p>{{educacion.descripcionEdu}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-10 m-auto">
-
-                <body>
-                    <div class="container mt-5 text-end">
-                        <a class="button fa fa-plus" href="#popup12" *ngIf="isLogged"> Agregar Experiencia</a>
-                        <div class="popup" id="popup12">
-                            <div class="popup-inner mt-5">
-                                <div class="popupphoto">
-                                    <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
-                                        alt="">
-                                </div>
-                                <div class="popuptext">
-                                    <h1 class="text-center">Agregar Experiencia</h1>
-                                    <div class="container">
-                                        <form id="contact" action="" method="post">
-                                            <h3 class="text-center">Expériencia</h3>
-                                            <h4></h4>
-                                            <fieldset>
-                                                <input placeholder="Titulo" id="idTituloExp" name="tituloExp"
-                                                    [(ngModel)]="expLoad.tituloExp" type="text" tabindex="1" required
-                                                    autofocus>
-                                            </fieldset>
-                                            <fieldset>
-                                                <input placeholder="Decripcion" id="idDescExp" name="descExp"
-                                                    [(ngModel)]="expLoad.descExp" type="text" tabindex="1" required
-                                                    autofocus>
-                                            </fieldset>
-                                            <fieldset>
-                                                <label for="">Fecha Inicio</label>
-                                                <input placeholder="Fecha Inicio" id="idFechaExpIni" name="fechaExpIni"
-                                                    [(ngModel)]="expLoad.fechaIniExp" type="date" tabindex="1" required
-                                                    autofocus>
-                                            </fieldset>
-                                            <fieldset>
-                                                <label for="">Fecha Fin</label>
-                                                <input placeholder="Fecha Fin" id="idFechaExpFin" name="fechaExpFin"
-                                                    [(ngModel)]="expLoad.fechaFinExp" type="date" tabindex="1" required
-                                                    autofocus>
-                                            </fieldset>
-                                            <fieldset>
-                                                <input placeholder="Imagen de la institucion" id="idImgExp"
-                                                    name="imgExp" [(ngModel)]="expLoad.imgExp" type="text" tabindex="1"
-                                                    required autofocus>
-                                            </fieldset>
-                                            <fieldset>
-                                                <button name="submit" type="submit" id="contact-submit"
-                                                    data-submit="...Sending"
-                                                    (click)="createdExperience()">Agregar</button>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                                <a class="closepopup" href="#education">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </body>
-                <h2 class="text-center mb-5">Experiencia</h2>
+  <div class="row">
+    <div class="col-10 m-auto">
+      <body>
+        <div class="container text-end">
+          <a class="button fa fa-plus" href="#popup5" *ngIf="isLogged">
+            Agregar Educacion</a
+          >
+          <div class="popup" id="popup5">
+            <div class="popup-inner mt-5">
+              <div class="popupphoto">
+                <img
+                  src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
+                  alt=""
+                />
+              </div>
+              <div class="popuptext mt-5">
+                <h1 class="text-center">Agregar Educacion</h1>
                 <div class="container">
-                    <div class="timeline clearfix">
-                        <div class="vertical-line">
-                            <div id="post-1" class="vesti-col timeline-post" *ngFor="let experience of experienceList">
-                                <div class="vesti-content-wrapper mt-5 text-end">
-                                    <a class="button fa fa-pencil" href="#popup15" *ngIf="isLogged"
-                                        (click)="loadExperience(experience.expId)"></a>
-                                    <a class="button fa fa-trash" href="#popup2" *ngIf="isLogged"
-                                        (click)="deleteExperience(experience.expId)"></a>
-                                    <div class="popup" id="popup15">
-                                        <div class="popup-inner mt-5">
-                                            <div class="popupphoto">
-                                                <img src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
-                                                    alt="">
-                                            </div>
-                                            <div class="popuptext">
-                                                <h1 class="text-center">Actualizar Experiencia</h1>
-                                                <div class="container">
-                                                    <form id="contact" action="" method="post">
-                                                        <h3 class="text-center">Expériencia</h3>
-                                                        <h4></h4>
-                                                        <fieldset>
-                                                            <input placeholder="Titulo" id="idTituloExp"
-                                                                name="tituloExp" [(ngModel)]="expLoad.tituloExp"
-                                                                type="text" tabindex="1" required autofocus>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <input placeholder="Decripcion" id="idDescExp"
-                                                                name="descExp" [(ngModel)]="expLoad.descExp" type="text"
-                                                                tabindex="1" required autofocus>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <input placeholder="Fecha Inicio" id="idFechaExpIni" name="fechaExpIni"
-                                                                [(ngModel)]="expLoad.fechaIniExp" type="date" tabindex="1"
-                                                                required autofocus>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <input placeholder="Fecha Fin" id="idFechaExpFin" name="fechaExpFin"
-                                                                [(ngModel)]="expLoad.fechaFinExp" type="date" tabindex="1"
-                                                                required autofocus>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <input placeholder="Imagen de la institucion" id="idImgExp"
-                                                                name="imgExp" [(ngModel)]="expLoad.imgExp" type="text"
-                                                                tabindex="1" required autofocus>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <button name="submit" type="submit" id="contact-submit"
-                                                                data-submit="...Sending"
-                                                                (click)="updateExperience()">Actualizar</button>
-                                                        </fieldset>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <a class="closepopup" href="#">X</a>
-                                        </div>
-                                    </div>
-                                    <div class="photo mt-2">
-                                        <img src="{{experience.imgExp}}">
-                                        <div class="vesti-date-wrapper">
-                                            <div class="vesti-date">
-                                                <span class="day">14</span>
-                                                <br>
-                                                <span class="month">{{experience.fechaIniExp}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="vesti-desc">
-                                        <a class="desc-a" href="#">
-                                            <h4>{{experience.tituloExp}}</h4>
-                                            <!-- <h3 class="text-black">{{experience.nom}}</h3> -->
-                                        </a>
-                                        <p>{{experience.descExp}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  <form id="contact" action="" method="post">
+                    <h3 class="text-center">Educacion</h3>
+                    <h4></h4>
+                    <fieldset>
+                      <input
+                        placeholder="Titulo"
+                        id="idTitle"
+                        name="title"
+                        [(ngModel)]="eduLoad.title"
+                        type="text"
+                        tabindex="1"
+                        required
+                        autofocus
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <input
+                        placeholder="Nombre de la Institucion"
+                        id="idInstitution"
+                        name="institution"
+                        [(ngModel)]="eduLoad.institution"
+                        type="text"
+                        tabindex="1"
+                        required
+                        autofocus
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <input
+                        placeholder="Descripción"
+                        id="idDescription"
+                        name="description"
+                        [(ngModel)]="eduLoad.description"
+                        type="text"
+                        tabindex="1"
+                        required
+                        autofocus
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <label for="">Fecha Inicio</label>
+                      <input
+                        placeholder="Fecha Inicio"
+                        id="idStarDate"
+                        name="starDate"
+                        [(ngModel)]="eduLoad.starDate"
+                        type="date"
+                        tabindex="1"
+                        required
+                        autofocus
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <label for="">Fecha Fin</label>
+                      <input
+                        placeholder="Fecha Fin"
+                        id="idEndDate"
+                        name="endDate"
+                        [(ngModel)]="eduLoad.endDate"
+                        type="date"
+                        tabindex="1"
+                        required
+                        autofocus
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <input
+                        placeholder="Imagen de la institucion"
+                        id="idImageUrl"
+                        name="imageUrl"
+                        [(ngModel)]="eduLoad.imageUrl"
+                        type="text"
+                        tabindex="1"
+                        required
+                        autofocus
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <button
+                        name="submit"
+                        type="submit"
+                        id="contact-submit"
+                        data-submit="...Sending"
+                        (click)="createdEducation()"
+                      >
+                        Agregar
+                      </button>
+                    </fieldset>
+                  </form>
                 </div>
+              </div>
+              <a class="closepopup" href="#education">X</a>
             </div>
+          </div>
         </div>
+      </body>
+      <h2 class="text-center mb-5" id="education">Educacion</h2>
+      <div class="container">
+        <div class="timeline clearfix">
+          <div class="vertical-line">
+            <div
+              id="post-1"
+              class="vesti-col timeline-post"
+              *ngFor="let educacion of educacionList"
+            >
+              <div class="vesti-content-wrapper mt-5 text-end">
+                <a
+                  class="button fa fa-pencil"
+                  href="#popup11"
+                  *ngIf="isLogged"
+                  (click)="loadEducation(educacion.id)"
+                ></a>
+                <a
+                  class="button fa fa-trash"
+                  href="#popup2"
+                  *ngIf="isLogged"
+                  (click)="deleteEducation(educacion.id)"
+                ></a>
+                <div class="popup" id="popup11">
+                  <div class="popup-inner mt-5">
+                    <div class="popupphoto">
+                      <img
+                        src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
+                        alt=""
+                      />
+                    </div>
+                    <div class="popuptext">
+                      <h1 class="text-center">Actualizar Educacion</h1>
+                      <div class="container">
+                        <form id="contact" action="" method="post">
+                          <h3 class="text-center">Educacion</h3>
+                          <h4></h4>
+                          <fieldset>
+                            <input
+                              placeholder="Titulo"
+                              id="idTitle"
+                              name="title"
+                              [(ngModel)]="eduLoad.title"
+                              type="text"
+                              tabindex="1"
+                              required
+                              autofocus
+                            />
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              placeholder="Nombre de la Institucion"
+                              id="idInstitution"
+                              name="institution"
+                              [(ngModel)]="eduLoad.institution"
+                              type="text"
+                              tabindex="1"
+                              required
+                              autofocus
+                            />
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              placeholder="Descripcion"
+                              id="idDescExp"
+                              name="description"
+                              [(ngModel)]="eduLoad.description"
+                              type="text"
+                              tabindex="1"
+                              required
+                              autofocus
+                            />
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              placeholder="Fecha Inicio"
+                              id="idStarDate"
+                              name="starDate"
+                              [(ngModel)]="eduLoad.starDate"
+                              type="date"
+                              tabindex="1"
+                              required
+                              autofocus
+                            />
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              placeholder="Fecha Fin"
+                              id="idEndDate"
+                              name="endDate"
+                              [(ngModel)]="eduLoad.endDate"
+                              type="date"
+                              tabindex="1"
+                              required
+                              autofocus
+                            />
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              placeholder="Imagen de la institucion"
+                              id="idImageUrl"
+                              name="imageUrl"
+                              [(ngModel)]="eduLoad.imageUrl"
+                              type="text"
+                              tabindex="1"
+                              required
+                              autofocus
+                            />
+                          </fieldset>
+                          <fieldset>
+                            <button
+                              name="submit"
+                              type="submit"
+                              id="contact-submit"
+                              data-submit="...Sending"
+                              (click)="updateEducation()"
+                            >
+                              Actualizar
+                            </button>
+                          </fieldset>
+                        </form>
+                      </div>
+                    </div>
+                    <a class="closepopup" href="#">X</a>
+                  </div>
+                </div>
+                <div class="photo mt-2">
+                  <img src="{{ educacion.imageUrl }}" />
+                  <div class="vesti-date-wrapper">
+                    <div class="vesti-date">
+                      <span class="day">{{ dates }}</span>
+                      <br />
+                      <span class="month">{{ educacion.starDate }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vesti-desc">
+                  <a class="desc-a" href="#">
+                    <h4>{{ educacion.title }}</h4>
+                    <h3 class="text-black">{{ educacion.institution }}</h3>
+                  </a>
+                  <p>{{ educacion.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-10 m-auto">
+        <body>
+          <div class="container mt-5 text-end">
+            <a class="button fa fa-plus" href="#popup12" *ngIf="isLogged">
+              Agregar Experiencia</a
+            >
+            <div class="popup" id="popup12">
+              <div class="popup-inner mt-5">
+                <div class="popupphoto">
+                  <img
+                    src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
+                    alt=""
+                  />
+                </div>
+                <div class="popuptext">
+                  <h1 class="text-center">Agregar Experiencia</h1>
+                  <div class="container">
+                    <form id="contact" action="" method="post">
+                      <h3 class="text-center">Expériencia</h3>
+                      <h4></h4>
+                      <fieldset>
+                        <input
+                          placeholder="Titulo"
+                          id="idTituloExp"
+                          name="tituloExp"
+                          [(ngModel)]="expLoad.title"
+                          type="text"
+                          tabindex="1"
+                          required
+                          autofocus
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <input
+                          placeholder="Decripcion"
+                          id="idDescExp"
+                          name="descExp"
+                          [(ngModel)]="expLoad.description"
+                          type="text"
+                          tabindex="1"
+                          required
+                          autofocus
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <label for="">Fecha Inicio</label>
+                        <input
+                          placeholder="Fecha Inicio"
+                          id="idFechaExpIni"
+                          name="fechaExpIni"
+                          [(ngModel)]="expLoad.startDate"
+                          type="date"
+                          tabindex="1"
+                          required
+                          autofocus
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <label for="">Fecha Fin</label>
+                        <input
+                          placeholder="Fecha Fin"
+                          id="idFechaExpFin"
+                          name="fechaExpFin"
+                          [(ngModel)]="expLoad.endDate"
+                          type="date"
+                          tabindex="1"
+                          required
+                          autofocus
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <input
+                          placeholder="Imagen de la institucion"
+                          id="idImgExp"
+                          name="imgExp"
+                          [(ngModel)]="expLoad.imageUrl"
+                          type="text"
+                          tabindex="1"
+                          required
+                          autofocus
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <button
+                          name="submit"
+                          type="submit"
+                          id="contact-submit"
+                          data-submit="...Sending"
+                          (click)="createdExperience()"
+                        >
+                          Agregar
+                        </button>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+                <a class="closepopup" href="#education">X</a>
+              </div>
+            </div>
+          </div>
+        </body>
+        <h2 class="text-center mb-5">Experiencia</h2>
+        <div class="container">
+          <div class="timeline clearfix">
+            <div class="vertical-line">
+              <div
+                id="post-1"
+                class="vesti-col timeline-post"
+                *ngFor="let experience of experienceList"
+              >
+                <div class="vesti-content-wrapper mt-5 text-end">
+                  <a
+                    class="button fa fa-pencil"
+                    href="#popup15"
+                    *ngIf="isLogged"
+                    (click)="loadExperience(experience.id)"
+                  ></a>
+                  <a
+                    class="button fa fa-trash"
+                    href="#popup2"
+                    *ngIf="isLogged"
+                    (click)="deleteExperience(experience.id)"
+                  ></a>
+                  <div class="popup" id="popup15">
+                    <div class="popup-inner mt-5">
+                      <div class="popupphoto">
+                        <img
+                          src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?cs=srgb&dl=access-algorithm-binary-193349.jpg&fm"
+                          alt=""
+                        />
+                      </div>
+                      <div class="popuptext">
+                        <h1 class="text-center">Actualizar Experiencia</h1>
+                        <div class="container">
+                          <form id="contact" action="" method="post">
+                            <h3 class="text-center">Expériencia</h3>
+                            <h4></h4>
+                            <fieldset>
+                              <input
+                                placeholder="Titulo"
+                                id="idTitle"
+                                name="title"
+                                [(ngModel)]="expLoad.title"
+                                type="text"
+                                tabindex="1"
+                                required
+                                autofocus
+                              />
+                            </fieldset>
+                            <fieldset>
+                              <input
+                                placeholder="Decripcion"
+                                id="idDescription"
+                                name="description"
+                                [(ngModel)]="expLoad.description"
+                                type="text"
+                                tabindex="1"
+                                required
+                                autofocus
+                              />
+                            </fieldset>
+                            <fieldset>
+                              <input
+                                placeholder="Fecha Inicio"
+                                id="idStarDate"
+                                name="startDate"
+                                [(ngModel)]="expLoad.startDate"
+                                type="date"
+                                tabindex="1"
+                                required
+                                autofocus
+                              />
+                            </fieldset>
+                            <fieldset>
+                              <input
+                                placeholder="Fecha Fin"
+                                id="idStarDate"
+                                name="endDate"
+                                [(ngModel)]="expLoad.endDate"
+                                type="date"
+                                tabindex="1"
+                                required
+                                autofocus
+                              />
+                            </fieldset>
+                            <fieldset>
+                              <input
+                                placeholder="Imagen de la institucion"
+                                id="idImageUrl"
+                                name="imageUrl"
+                                [(ngModel)]="expLoad.imageUrl"
+                                type="text"
+                                tabindex="1"
+                                required
+                                autofocus
+                              />
+                            </fieldset>
+                            <fieldset>
+                              <button
+                                name="submit"
+                                type="submit"
+                                id="contact-submit"
+                                data-submit="...Sending"
+                                (click)="updateExperience()"
+                              >
+                                Actualizar
+                              </button>
+                            </fieldset>
+                          </form>
+                        </div>
+                      </div>
+                      <a class="closepopup" href="#">X</a>
+                    </div>
+                  </div>
+                  <div class="photo mt-2">
+                    <img src="{{ experience.imageUrl }}" />
+                    <div class="vesti-date-wrapper">
+                      <div class="vesti-date">
+                        <span class="day">14</span>
+                        <br />
+                        <span class="month">{{ experience.startDate }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="vesti-desc">
+                    <a class="desc-a" href="#">
+                      <h4>{{ experience.title }}</h4>
+                      <!-- <h3 class="text-black">{{experience.nom}}</h3> -->
+                    </a>
+                    <p>{{ experience.description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

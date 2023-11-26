@@ -1,11 +1,9 @@
 export class Educacion {
-
-    eduId!: number;
-    titulo!: string;
-    nombreInstituacion!: string;
-    descripcionEdu!: string;
-    fechaIni!: Date;
-    fechaFin!:Date;
-    imagEdu!:string;
-
+  id!: number;
+  title!: string;
+  institution!: string;
+  description!: string;
+  starDate!: number;
+  endDate!: Date;
+  imageUrl!: string;
 }

@@ -1,9 +1,8 @@
 export class Experiencia {
-
-    expId!: number;
-    tituloExp!: string;
-    descExp!: string;
-    imgExp!: string;
-    fechaIniExp!:Date;
-    fechaFinExp!:Date;
+  id!: number;
+  title!: string;
+  description!: string;
+  imageUrl!: string;
+  startDate!: Date;
+  endDate!: Date;
 }

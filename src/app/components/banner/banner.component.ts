@@ -7,15 +7,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css']
+  styleUrls: ['./banner.component.css'],
 })
 export class BannerComponent implements OnInit {
-
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
   isLogged = false;
 
-  constructor(private usuarioSvc: UsuarioService, private tokenService: TokenService, private toastrSvc: ToastrService) {
+  constructor(
+    private usuarioSvc: UsuarioService,
+    private tokenService: TokenService,
+    private toastrSvc: ToastrService
+  ) {
     this.usuario = new Usuario();
   }
 
@@ -29,17 +32,16 @@ export class BannerComponent implements OnInit {
   }
 
   cargarUsuario() {
-    this.usuarioSvc.getUsuario().subscribe(result => {
+    this.usuarioSvc.getUsuario().subscribe((result) => {
       this.usuario = new Usuario();
-      Object.assign(this.usuario, result)
-    })
-
+      Object.assign(this.usuario, result);
+    });
   }
 
   updateUsuario(): void {
-    this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
-      this.toastrSvc.info("Usuario updated successfully");
+    this.usuarioSvc.updateUsuario(this.usuario).subscribe((result) => {
+      this.toastrSvc.info('Usuario updated successfully');
       window.location.reload();
-    })
+    });
   }
 }

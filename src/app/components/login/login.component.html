@@ -20,10 +20,10 @@
                         <div class="form-group form-group--noaccount">
                             <h3 class="form-group_title">Sign up</h3>
                             <input class="form-group_input" type="text" name="username" id="username"
-                                [(ngModel)]="usuario.nombre" placeholder="Full Name o Nombre" />
+                                [(ngModel)]="usuario.firstName" placeholder="Full Name o Nombre" />
                             <input class="form-group_input" type="email" placeholder="Email" />
                             <input class="form-group_input" type="password" name="password"
-                                [(ngModel)]="usuario.apellido" id="password" placeholder="Password o Nontraseña" />
+                                [(ngModel)]="usuario.lastName" id="password" placeholder="Password o Nontraseña" />
                             <button class="button button--form " (click)="createdUsuario()">Sign up</button>
                         </div>
                     </div>

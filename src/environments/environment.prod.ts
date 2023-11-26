@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url:'https://portfolio-be-api.fly.dev'
 };

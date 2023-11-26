@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-acerca-de',
   templateUrl: './acerca-de.component.html',
-  styleUrls: ['./acerca-de.component.css']
+  styleUrls: ['./acerca-de.component.css'],
 })
 export class AcercaDeComponent implements OnInit {
-
   usuario!: Usuario;
   usuarios!: Array<Usuario>;
   isLogged: boolean = false;
-  constructor(private usuarioSvc: UsuarioService, private tokenService: TokenService) {
+  constructor(
+    private usuarioSvc: UsuarioService,
+    private tokenService: TokenService
+  ) {
     this.usuario = new Usuario();
   }
 
@@ -27,15 +29,14 @@ export class AcercaDeComponent implements OnInit {
   }
 
   cargarUsuario() {
-    this.usuarioSvc.getUsuario().subscribe(result => {
+    this.usuarioSvc.getUsuario().subscribe((result) => {
       this.usuario = new Usuario();
-      Object.assign(this.usuario, result)
-    })
+      Object.assign(this.usuario, result);
+    });
   }
 
   updateUsuario(usuario: Usuario): void {
-    this.usuarioSvc.updateUsuario(this.usuario).subscribe(result => {
-    })
+    this.usuarioSvc.updateUsuario(this.usuario).subscribe((result) => {});
   }
 
   onNameChange($event: any) {

@@ -2,76 +2,54 @@ import { Habilidad } from './../../models/habilidad/habilidad';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SkillService {
-
-  url: string = "https://appportfoliobackendarg.herokuapp.com/skills/"
+  url: string = `${environment.url}/skills/`;
   //url:string="http://localhost:8080/skills/";
 
-  constructor(private _http: HttpClient) {
-
-  }
+  constructor(private _http: HttpClient) {}
 
   getSkills(): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-
-      }),
-      params: new HttpParams({
-
-      })
-    }
-    return this._http.get(this.url + "see/all");
+      headers: new HttpHeaders({}),
+      params: new HttpParams({}),
+    };
+    return this._http.get(this.url + 'see/all');
   }
 
   getSkill(id: number): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-
-      }),
-      params: new HttpParams({
-
-      })
-    }
-    return this._http.get(this.url + "see/" + id);
+      headers: new HttpHeaders({}),
+      params: new HttpParams({}),
+    };
+    return this._http.get(this.url + 'see/' + id);
   }
 
   updateSkill(skill: Habilidad): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-
-      }),
-      params: new HttpParams({
-
-      })
-    }
-    return this._http.put<any>(this.url + "edit/" + skill.habId, skill);
+      headers: new HttpHeaders({}),
+      params: new HttpParams({}),
+    };
+    return this._http.put<any>(this.url + 'edit/' + skill.id, skill);
   }
 
-  createdSkill(skill: Habilidad, idUser:number): Observable<any> {
+  createdSkill(skill: Habilidad, idUser: number): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-
-      }),
-      params: new HttpParams({
-
-      })
-    }
-    return this._http.post(this.url + 'new/'+idUser, skill)
+      headers: new HttpHeaders({}),
+      params: new HttpParams({}),
+    };
+    return this._http.post(this.url + 'new/' + idUser, skill);
   }
 
   deleteSkill(id: number): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-
-      }),
-      params: new HttpParams({
-
-      })
-    }
-    return this._http.delete(this.url + "delete/" + id)
+      headers: new HttpHeaders({}),
+      params: new HttpParams({}),
+    };
+    return this._http.delete(this.url + 'delete/' + id);
   }
 }

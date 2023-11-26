@@ -75,8 +75,8 @@ export class LoginComponent implements OnInit {
   }
 
   createdUsuario(){
-    this.usuario.titulo=" ";
-    this.usuario.descripcion=" ";
+    this.usuario.biography=" ";
+    this.usuario.biography=" ";
     console.log(this.usuario);
     this.UsuarioSvc.createdUsuario(this.usuario).subscribe(data => {
       this.toastrSvc.success("Usuario has been created");

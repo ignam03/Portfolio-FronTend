@@ -12,10 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
-  styleUrls: ['./educacion.component.css']
+  styleUrls: ['./educacion.component.css'],
 })
 export class EducacionComponent implements OnInit {
-
   eduLoad!: Educacion;
   educacion!: Educacion;
   educacionList!: Array<Educacion>;
@@ -26,7 +25,14 @@ export class EducacionComponent implements OnInit {
   usuario!: Usuario;
   dates!: Array<Date>;
 
-  constructor(private educacionSvc: EducacionService, private experienceSvc: ExperienciaService, private activatedRoute: ActivatedRoute, private tokenService: TokenService, private toastrSvc: ToastrService, private usuarioSvc: UsuarioService) {
+  constructor(
+    private educacionSvc: EducacionService,
+    private experienceSvc: ExperienciaService,
+    private activatedRoute: ActivatedRoute,
+    private tokenService: TokenService,
+    private toastrSvc: ToastrService,
+    private usuarioSvc: UsuarioService
+  ) {
     this.educacion = new Educacion();
     this.experience = new Experiencia();
     this.dates = new Array<Date>();
@@ -37,9 +43,9 @@ export class EducacionComponent implements OnInit {
     this.cargarEducacionList();
     this.loadAllExp();
     this.activatedRoute.params.subscribe((params: any) => {
-      this.loadEducation(params['id'])
-      this.loadExperience(params['id'])
-    })
+      this.loadEducation(params['id']);
+      this.loadExperience(params['id']);
+    });
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
@@ -48,111 +54,105 @@ export class EducacionComponent implements OnInit {
   }
 
   cargarUsuario() {
-    this.usuarioSvc.getUsuario().subscribe(result => {
+    this.usuarioSvc.getUsuario().subscribe((result) => {
       this.usuario = new Usuario();
-      Object.assign(this.usuario, result)
-    })
+      Object.assign(this.usuario, result);
+    });
   }
 
-
   cargarEducacionList() {
-    this.educacionSvc.getEduTodas().subscribe(result => {
-      console.log(result);
+    this.educacionSvc.getEduTodas().subscribe((result) => {
       this.educacionList = new Array<Educacion>();
       result.forEach((element: any) => {
         this.educacion = new Educacion();
+        const date = new Date(element.fechaIni);
         Object.assign(this.educacion, element);
+        this.educacion.starDate = date.getFullYear();
         this.educacionList.push(this.educacion);
-      })
-    })
+        console.log(this.educacionList);
+      });
+    });
   }
-
 
   loadEducation(id: number) {
     this.eduLoad = new Educacion();
     if (this.tokenService.getToken()) {
-      this.educacionSvc.getEducation(id).subscribe(result => {
-        console.log(result);
+      this.educacionSvc.getEducation(id).subscribe((result) => {
         Object.assign(this.eduLoad, result);
-        console.log(this.eduLoad)
-      })
+      });
     }
   }
 
   updateEducation() {
-    this.educacionSvc.updateEducation(this.eduLoad).subscribe(result => {
-      console.log("actualizado creo");
-      this.toastrSvc.info("Education has update successfully");
+    this.educacionSvc.updateEducation(this.eduLoad).subscribe((result) => {
+      this.toastrSvc.info('Education has update successfully');
       window.location.reload();
-    })
+    });
   }
 
   createdEducation() {
     console.log(this.eduLoad);
-    this.educacionSvc.createdEducation(this.eduLoad, this.usuario.userId).subscribe(result => {
-      this.toastrSvc.success("Education has created successfully");
-      console.log(this.usuario);
-      window.location.reload();
-    })
+    this.educacionSvc
+      .createdEducation(this.eduLoad, this.usuario.id)
+      .subscribe((result) => {
+        this.toastrSvc.success('Education has created successfully');
+        window.location.reload();
+      });
     this.eduLoad = new Educacion();
   }
 
   deleteEducation(id: number) {
-    this.educacionSvc.deleteEducation(id).subscribe(result => {
-      this.toastrSvc.success("Education has deleted successfully");
+    this.educacionSvc.deleteEducation(id).subscribe((result) => {
+      this.toastrSvc.success('Education has deleted successfully');
       window.location.reload();
-    })
+    });
   }
 
   //Method for experience
 
-
   loadAllExp() {
-    this.experienceSvc.getAllExperiences().subscribe(result => {
-      console.log(result);
+    this.experienceSvc.getAllExperiences().subscribe((result) => {
       this.experienceList = new Array<Experiencia>();
       result.forEach((element: any) => {
         this.experience = new Experiencia();
         Object.assign(this.experience, element);
         this.experienceList.push(this.experience);
-        console.log(this.experienceList);
-      })
-    })
+      });
+    });
   }
 
   loadExperience(id: number) {
     this.expLoad = new Experiencia();
     if (this.tokenService.getToken()) {
-      this.experienceSvc.getExperience(id).subscribe(result => {
-        console.log(result);
+      this.experienceSvc.getExperience(id).subscribe((result) => {
         Object.assign(this.expLoad, result);
-        console.log(this.expLoad)
-      })
+        console.log(this.expLoad);
+      });
     }
   }
 
   updateExperience() {
     console.log(this.expLoad);
-    this.experienceSvc.updateExperience(this.expLoad).subscribe(result => {
-      this.toastrSvc.info("Experience updated successfully");
+    this.experienceSvc.updateExperience(this.expLoad).subscribe((result) => {
+      this.toastrSvc.info('Experience updated successfully');
       window.location.reload();
-    })
+    });
   }
 
   createdExperience() {
-    console.log(this.expLoad);
-    this.experienceSvc.createdExperience(this.expLoad, this.usuario.userId).subscribe(result => {
-      this.toastrSvc.success("Experience created successfully");
-      window.location.reload();
-    })
+    this.experienceSvc
+      .createdExperience(this.expLoad, this.usuario.id)
+      .subscribe((result) => {
+        this.toastrSvc.success('Experience created successfully');
+        window.location.reload();
+      });
     this.eduLoad = new Educacion();
   }
 
   deleteExperience(id: number) {
-    console.log(id);
-    this.experienceSvc.deleteExperience(id).subscribe(result => {
-      this.toastrSvc.success("Experience deleted successfully");
+    this.experienceSvc.deleteExperience(id).subscribe((result) => {
+      this.toastrSvc.success('Experience deleted successfully');
       window.location.reload();
-    })
+    });
   }
 }
